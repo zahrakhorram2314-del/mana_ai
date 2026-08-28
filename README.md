@@ -9,3 +9,4 @@
   <a href="https://aistudio.google.com/apps">Start building</a>
 
 </div>
+https://ai.studio/apps/b7a5d027-b635-4886-8a4e-faad7a7c613f
