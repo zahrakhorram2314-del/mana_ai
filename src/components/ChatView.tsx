@@ -159,28 +159,31 @@ export const ChatView: React.FC<ChatViewProps> = ({
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex flex-col h-[calc(100vh-5.5rem)]">
       {/* Top Header & Model Controls */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 mb-4 shadow-md space-y-3 shrink-0">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-400 flex items-center justify-center text-xl shadow-md shadow-emerald-950/40">
+      <div className="bg-[#121915]/80 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-5 mb-4 shadow-[0_4px_30px_rgba(0,0,0,0.4),0_0_25px_rgba(16,185,129,0.08)] space-y-4 shrink-0 relative overflow-hidden">
+        {/* Ambient background glow */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#184a30] via-[#133824] to-[#0e2417] border border-emerald-400/30 flex items-center justify-center text-xl shadow-lg shadow-emerald-950/50">
               🌿
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold font-serif text-stone-100">Mana Reflection Space</h2>
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
-                  Active Listening Companion
+              <div className="flex items-center gap-2 flex-wrap">
+                <h2 className="text-base sm:text-lg font-bold font-serif text-[#f4f6f4]">Mana Reflection Space</h2>
+                <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#183a27] text-emerald-300 border border-[#2d5e41] font-medium shadow-xs">
+                  AI Companion
                 </span>
               </div>
-              <p className="text-xs text-stone-400">
-                Empathetic, non-directive dialogue for self-discovery & mental space
+              <p className="text-xs text-stone-300/90 mt-0.5">
+                A gentle space to reflect and organize your thoughts.
               </p>
             </div>
           </div>
 
           <button
             onClick={onClearChat}
-            className="self-start sm:self-auto text-xs text-stone-400 hover:text-rose-400 flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-stone-950 border border-stone-800 transition-colors"
+            className="self-start sm:self-auto text-xs text-stone-400 hover:text-rose-400 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0b100e]/80 hover:bg-stone-900 border border-[#1d2a23] hover:border-rose-900/40 transition-colors shadow-xs cursor-pointer"
           >
             <Trash2 className="w-3.5 h-3.5" />
             <span>Reset Dialogue</span>
@@ -188,49 +191,50 @@ export const ChatView: React.FC<ChatViewProps> = ({
         </div>
 
         {/* Model Mode Switcher & Context Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-stone-800/80">
-          <div className="flex items-center gap-1.5 bg-stone-950 p-1 rounded-xl border border-stone-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#1d2a23]/80 relative z-10">
+          {/* Segmented Control Pill Bar */}
+          <div className="inline-flex items-center gap-1 bg-[#080d0a] p-1.5 rounded-2xl border border-[#1d2a23] shadow-inner">
             <button
               onClick={() => setSelectedMode('balanced')}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
                 selectedMode === 'balanced'
-                  ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'text-stone-400 hover:text-stone-200'
+                  ? 'bg-gradient-to-r from-[#183a27] to-[#1f4a32] text-white border border-[#2d5e41] shadow-[0_0_12px_rgba(16,185,129,0.25)] font-semibold'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-[#121915]'
               }`}
               title="Gemini 3.6 Flash: Warm, empathetic, balanced response"
             >
-              <Compass className="w-3.5 h-3.5" />
+              <Compass className={`w-3.5 h-3.5 ${selectedMode === 'balanced' ? 'text-emerald-300' : 'text-stone-400'}`} />
               <span>Balanced (3.6 Flash)</span>
             </button>
 
             <button
               onClick={() => setSelectedMode('fast')}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
                 selectedMode === 'fast'
-                  ? 'bg-cyan-600 text-white shadow-sm'
-                  : 'text-stone-400 hover:text-stone-200'
+                  ? 'bg-gradient-to-r from-cyan-950 to-cyan-900 text-cyan-200 border border-cyan-700/50 shadow-[0_0_12px_rgba(6,182,212,0.2)] font-semibold'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-[#121915]'
               }`}
               title="Gemini 3.1 Flash-Lite: Low-latency ultra-fast responses"
             >
-              <Zap className="w-3.5 h-3.5" />
+              <Zap className={`w-3.5 h-3.5 ${selectedMode === 'fast' ? 'text-cyan-300' : 'text-stone-400'}`} />
               <span>Low Latency (3.1 Flash-Lite)</span>
             </button>
 
             <button
               onClick={() => setSelectedMode('thinking')}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
                 selectedMode === 'thinking'
-                  ? 'bg-purple-600 text-white shadow-sm'
-                  : 'text-stone-400 hover:text-stone-200'
+                  ? 'bg-gradient-to-r from-purple-950 to-purple-900 text-purple-200 border border-purple-700/50 shadow-[0_0_12px_rgba(168,85,247,0.2)] font-semibold'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-[#121915]'
               }`}
               title="Gemini 3.6 High Thinking: Deep reflection and psychological reasoning"
             >
-              <Cpu className="w-3.5 h-3.5" />
+              <Cpu className={`w-3.5 h-3.5 ${selectedMode === 'thinking' ? 'text-purple-300' : 'text-stone-400'}`} />
               <span>High Thinking (3.6 Thinking)</span>
             </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3.5">
+          <div className="flex flex-wrap items-center gap-4">
             <label className="flex items-center gap-2 text-xs text-stone-300 cursor-pointer select-none">
               <input
                 id="checkbox-journal-context"
@@ -239,7 +243,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
                 onChange={(e) => setIncludeJournalContext(e.target.checked)}
                 className="accent-emerald-500 rounded cursor-pointer"
               />
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1.5">
                 <Paperclip className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Weave Journal Context ({recentEntries.length} entries)</span>
               </span>
@@ -253,24 +257,21 @@ export const ChatView: React.FC<ChatViewProps> = ({
                 onChange={(e) => setUseGoogleSearch(e.target.checked)}
                 className="accent-cyan-500 rounded cursor-pointer"
               />
-              <span className="flex items-center gap-1">
-                <svg className="w-3 h-3 text-cyan-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                </svg>
-                <span className="text-cyan-300 font-medium">Google Search Grounding</span>
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <span className="text-cyan-300 font-medium">Gemini Web Search</span>
               </span>
             </label>
           </div>
         </div>
 
-        {/* Clinical Disclaimer Bar */}
-        <div className="bg-amber-950/20 border border-amber-800/30 rounded-xl px-3 py-1.5 text-[11px] text-amber-300/90 flex items-center gap-2">
-          <ShieldAlert className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-          <span>
-            <strong className="font-semibold text-amber-200">Important Disclaimer:</strong> Mana is a supportive personal journaling companion and NOT a clinical therapist.
+        {/* Refined Clinical Disclaimer Bar */}
+        <div className="bg-gradient-to-r from-[#21190a]/90 via-[#261d0c]/80 to-[#1f1709]/90 border border-amber-500/30 rounded-2xl px-3.5 py-2 text-[11px] text-amber-200/95 flex items-center gap-2.5 shadow-sm relative z-10">
+          <div className="p-1 rounded-lg bg-amber-500/15 text-amber-400 border border-amber-500/30 shrink-0">
+            <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+          </div>
+          <span className="leading-snug">
+            <strong className="font-semibold text-amber-300">Important Disclaimer:</strong> Mana is a supportive personal journaling companion and NOT a clinical therapist.
           </span>
         </div>
       </div>

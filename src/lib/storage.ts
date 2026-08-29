@@ -42,7 +42,7 @@ export function getSampleChat(userId: string): ChatMessage[] {
       id: `init-mana-${userId}`,
       userId,
       sender: 'mana',
-      text: "Hello! I'm Mana (مانا) 🌿\n\nI'm your warm, supportive friend and AI journaling companion. I'm here to help you reflect, document your day, and organize your thoughts through simple, stress-free micro-journaling.\n\n*(A quick friendly note: I am an AI companion here to listen and encourage you, not a licensed medical or clinical professional.)*\n\nHow is your mind and heart feeling today? Do you prefer responses to be short and concise, or would you like more detailed explanations?",
+      text: "Hello! I'm Mana 🌿\n\nI'm your warm, supportive friend and AI journaling companion. I'm here to help you reflect, document your day, and organize your thoughts through simple, stress-free micro-journaling.\n\n*(A quick friendly note: I am an AI companion here to listen and encourage you, not a licensed medical or clinical professional.)*\n\nHow is your mind and heart feeling today? Do you prefer responses to be short and concise, or would you like more detailed explanations?",
       timestamp: new Date().toISOString(),
       mode: 'balanced',
     },
@@ -128,7 +128,20 @@ export function getChatMessages(userId: string): ChatMessage[] {
       localStorage.setItem(key, JSON.stringify(initial));
       return initial;
     }
-    return JSON.parse(data);
+    let parsed: ChatMessage[] = JSON.parse(data);
+    let dirty = false;
+
+    // Reset/clear if it is the default initial state containing the old text or Persian translation
+    const hasOldText = parsed.some(msg => msg.text && (msg.text.includes('(مانا)') || msg.text.includes('مانا')));
+    const isSingleInitialMessage = parsed.length === 1 && parsed[0].sender === 'mana';
+
+    if (hasOldText || isSingleInitialMessage) {
+      const fresh = getSampleChat(userId);
+      localStorage.setItem(key, JSON.stringify(fresh));
+      return fresh;
+    }
+
+    return parsed;
   } catch (err) {
     console.error('Error fetching chat messages:', err);
     return [];

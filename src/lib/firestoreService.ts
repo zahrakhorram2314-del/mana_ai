@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from './firebase';
 import { JournalEntry, ChatMessage, DailySummary, UserProfile } from '../types';
+import { getSampleChat } from './storage';
 
 export enum OperationType {
   CREATE = 'create',
@@ -163,7 +164,7 @@ export async function getFirestoreChatMessages(userId: string): Promise<ChatMess
     const q = query(chatRef, orderBy('timestamp', 'asc'));
     const snapshot = await getDocs(q);
     
-    return snapshot.docs.map(doc => {
+    let messages = snapshot.docs.map(doc => {
       const data = doc.data();
       return {
         id: doc.id,
@@ -177,6 +178,32 @@ export async function getFirestoreChatMessages(userId: string): Promise<ChatMess
         groundingMetadata: data.groundingMetadata,
       } as ChatMessage;
     });
+
+    const hasOldText = messages.some(msg => msg.text && (msg.text.includes('(مانا)') || msg.text.includes('مانا')));
+    const isSingleInitialMessage = messages.length === 1 && messages[0].sender === 'mana';
+
+    if (hasOldText || isSingleInitialMessage) {
+      const fresh = getSampleChat(userId);
+      // Let's delete the old messages from firestore and write the fresh one to align the cloud state
+      try {
+        const batch = writeBatch(db);
+        // Delete all existing documents in users/userId/chatMessages
+        for (const docSnap of snapshot.docs) {
+          batch.delete(docSnap.ref);
+        }
+        // Save the new clean sample chat
+        for (const msg of fresh) {
+          const newDocRef = doc(db, 'users', userId, 'chatMessages', msg.id);
+          batch.set(newDocRef, sanitizeForFirestore(msg));
+        }
+        await batch.commit();
+      } catch (err) {
+        console.error('Failed to sync cleaned chat to Firestore:', err);
+      }
+      return fresh;
+    }
+    
+    return messages;
   } catch (error) {
     handleFirestoreError(error, OperationType.LIST, path);
     return [];
