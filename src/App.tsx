@@ -36,6 +36,7 @@ import { ChatView } from './components/ChatView';
 import { MoodSummarizerView } from './components/MoodSummarizerView';
 import { WellnessView } from './components/WellnessView';
 import { KeyManagementModal } from './components/KeyManagementModal';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [user, setUser] = useState<UserProfile | null>(() => getStoredUser());
@@ -244,64 +245,98 @@ export default function App() {
       {/* Main View Switcher */}
       {user && (
         <main className="pb-12">
-          {activeTab === 'journal' && (
-            <JournalView
-              userId={user.uid}
-              entries={entries}
-              onSaveEntry={handleSaveEntry}
-              onDeleteEntry={handleDeleteEntry}
-              onDiscussEntryWithMana={handleDiscussEntryWithMana}
-              onOpenSummarizer={() => setActiveTab('summarizer')}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {activeTab === 'journal' && (
+              <motion.div
+                key="journal"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              >
+                <JournalView
+                  userId={user.uid}
+                  entries={entries}
+                  onSaveEntry={handleSaveEntry}
+                  onDeleteEntry={handleDeleteEntry}
+                  onDiscussEntryWithMana={handleDiscussEntryWithMana}
+                  onOpenSummarizer={() => setActiveTab('summarizer')}
+                />
+              </motion.div>
+            )}
 
-          {activeTab === 'chat' && (
-            <ChatView
-              userId={user.uid}
-              messages={chatMessages}
-              recentEntries={entries}
-              onSaveMessage={handleSaveChatMessage}
-              onClearChat={handleClearChat}
-              onSaveThoughtToJournal={handleSaveThoughtToJournal}
-              preloadedContext={chatPreloadedContext}
-              onClearPreloadedContext={() => setChatPreloadedContext(null)}
-            />
-          )}
+            {activeTab === 'chat' && (
+              <motion.div
+                key="chat"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              >
+                <ChatView
+                  userId={user.uid}
+                  messages={chatMessages}
+                  recentEntries={entries}
+                  onSaveMessage={handleSaveChatMessage}
+                  onClearChat={handleClearChat}
+                  onSaveThoughtToJournal={handleSaveThoughtToJournal}
+                  preloadedContext={chatPreloadedContext}
+                  onClearPreloadedContext={() => setChatPreloadedContext(null)}
+                />
+              </motion.div>
+            )}
 
-          {activeTab === 'summarizer' && (
-            <MoodSummarizerView
-              userId={user.uid}
-              entries={entries}
-              summaries={summaries}
-              onSaveSummary={handleSaveDailySummary}
-              onDeleteSummary={handleDeleteDailySummary}
-              onSaveSummaryToJournal={handleSaveSummaryToJournal}
-              onNavigateToChat={() => setActiveTab('chat')}
-            />
-          )}
+            {activeTab === 'summarizer' && (
+              <motion.div
+                key="summarizer"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              >
+                <MoodSummarizerView
+                  userId={user.uid}
+                  entries={entries}
+                  summaries={summaries}
+                  onSaveSummary={handleSaveDailySummary}
+                  onDeleteSummary={handleDeleteDailySummary}
+                  onSaveSummaryToJournal={handleSaveSummaryToJournal}
+                  onNavigateToChat={() => setActiveTab('chat')}
+                />
+              </motion.div>
+            )}
 
-          {activeTab === 'wellness' && (
-            <WellnessView
-              userId={user.uid}
-              onSaveJournalFromBreathwork={handleSaveThoughtToJournal}
-              onNavigateToChat={(contextText) => {
-                if (contextText) {
-                  // Push prompt message if context is provided
-                  const manaContextMessage: ChatMessage = {
-                    id: `chat_breath_${Date.now()}`,
-                    userId: user.uid,
-                    sender: 'user',
-                    text: contextText,
-                    timestamp: new Date().toISOString(),
-                    mode: 'balanced',
-                  };
-                  handleSaveChatMessage(manaContextMessage);
-                }
-                setActiveTab('chat');
-              }}
-              onNavigateToJournal={() => setActiveTab('journal')}
-            />
-          )}
+            {activeTab === 'wellness' && (
+              <motion.div
+                key="wellness"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+              >
+                <WellnessView
+                  userId={user.uid}
+                  onSaveJournalFromBreathwork={handleSaveThoughtToJournal}
+                  onNavigateToChat={(contextText) => {
+                    if (contextText) {
+                      // Push prompt message if context is provided
+                      const manaContextMessage: ChatMessage = {
+                        id: `chat_breath_${Date.now()}`,
+                        userId: user.uid,
+                        sender: 'user',
+                        text: contextText,
+                        timestamp: new Date().toISOString(),
+                        mode: 'balanced',
+                      };
+                      handleSaveChatMessage(manaContextMessage);
+                    }
+                    setActiveTab('chat');
+                  }}
+                  onNavigateToJournal={() => setActiveTab('journal')}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </main>
       )}
 
