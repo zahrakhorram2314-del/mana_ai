@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global catch-all default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow get, update: if isOwner(userId) && isValidId(userId);
+      allow create: if isOwner(userId) && isValidId(userId) && request.resource.data.userId == userId;
+      allow delete: if false;
+
+      // Journal entries
+      match /journals/{journalId} {
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow get, create, update, delete: if isOwner(userId) && isValidId(userId) && isValidId(journalId);
+      }
+
+      // Chat messages with Mana
+      match /chatMessages/{messageId} {
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow get, create, update, delete: if isOwner(userId) && isValidId(userId) && isValidId(messageId);
+      }
+
+      // Daily summaries and mood tracker
+      match /dailySummaries/{summaryId} {
+        allow list: if isOwner(userId) && isValidId(userId);
+        allow get, create, update, delete: if isOwner(userId) && isValidId(userId) && isValidId(summaryId);
+      }
+    }
+  }
+}

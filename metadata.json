@@ -1,0 +1,6 @@
+{
+  "name": "Mana",
+  "description": "A secure personal journal and empathetic AI companion powered by Gemini, featuring multi-turn reflective dialogue, journal summarization, mood tracking, and isolated user storage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

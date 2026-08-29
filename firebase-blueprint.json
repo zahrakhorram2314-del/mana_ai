@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile metadata",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "themePreference": { "type": "string", "enum": ["light", "dark", "system"] }
+      },
+      "required": ["userId", "email"]
+    },
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Personal journal entry written by user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 20000 },
+        "mood": { "type": "string", "maxLength": 50 },
+        "moodScore": { "type": "number" },
+        "tags": { "type": "array" },
+        "date": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "aiInsight": { "type": "string", "maxLength": 2000 }
+      },
+      "required": ["id", "userId", "content", "date", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A message within a multi-turn chat conversation with Mana",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "sessionId": { "type": "string", "maxLength": 128 },
+        "sender": { "type": "string", "enum": ["user", "mana"] },
+        "text": { "type": "string", "maxLength": 10000 },
+        "timestamp": { "type": "string" },
+        "modelUsed": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "userId", "sessionId", "sender", "text", "timestamp"]
+    },
+    "DailySummary": {
+      "title": "DailySummary",
+      "description": "AI-generated mood tracking and daily journal summary",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 30 },
+        "summaryPoints": { "type": "array" },
+        "dominantMood": { "type": "string", "maxLength": 50 },
+        "moodScore": { "type": "number" },
+        "emotionalThemes": { "type": "array" },
+        "gratitudeHighlights": { "type": "array" },
+        "gentlePrompt": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "date", "summaryPoints", "dominantMood", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user profile doc"
+    },
+    "/users/{userId}/journals/{journalId}": {
+      "schema": "JournalEntry",
+      "description": "Private journal entries belonging to user"
+    },
+    "/users/{userId}/chatMessages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Private chat dialogue messages with Mana"
+    },
+    "/users/{userId}/dailySummaries/{summaryId}": {
+      "schema": "DailySummary",
+      "description": "AI-generated daily reflections and mood summaries"
+    }
+  }
+}
