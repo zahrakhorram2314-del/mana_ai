@@ -122,15 +122,35 @@ export const JournalView: React.FC<JournalViewProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleAddTag = () => {
-    if (tagInput.trim() && !tags.includes(tagInput.trim())) {
-      setTags([...tags, tagInput.trim()]);
+  const MAX_TAGS = 10;
+  const SUGGESTED_TAGS = ['Gratitude', 'Mindfulness', 'Work', 'Health', 'Calm', 'Reflections', 'Family', 'Growth', 'Relationships', 'Peace'];
+
+  const handleAddTag = (rawTagInput?: string) => {
+    const textToProcess = rawTagInput !== undefined ? rawTagInput : tagInput;
+    if (!textToProcess.trim()) return;
+
+    const candidates = textToProcess
+      .split(',')
+      .map((t) => t.trim().replace(/^#/, ''))
+      .filter((t) => t.length > 0);
+
+    const updatedTags = [...tags];
+    for (const candidate of candidates) {
+      if (updatedTags.length >= MAX_TAGS) break;
+      const exists = updatedTags.some((existing) => existing.toLowerCase() === candidate.toLowerCase());
+      if (!exists) {
+        updatedTags.push(candidate);
+      }
+    }
+
+    setTags(updatedTags);
+    if (rawTagInput === undefined) {
       setTagInput('');
     }
   };
 
   const handleRemoveTag = (tagToRemove: string) => {
-    setTags(tags.filter((t) => t !== tagToRemove));
+    setTags(tags.filter((t) => t.toLowerCase() !== tagToRemove.toLowerCase()));
   };
 
   const handleSave = (e: React.FormEvent) => {
@@ -168,8 +188,14 @@ export const JournalView: React.FC<JournalViewProps> = ({
       }
       if (result.moodScore) setMoodScore(result.moodScore);
       if (result.tags && Array.isArray(result.tags)) {
-        const unique = Array.from(new Set([...tags, ...result.tags]));
-        setTags(unique);
+        const merged: string[] = [...tags];
+        for (const t of result.tags) {
+          const clean = t.trim().replace(/^#/, '');
+          if (clean && merged.length < MAX_TAGS && !merged.some((m) => m.toLowerCase() === clean.toLowerCase())) {
+            merged.push(clean);
+          }
+        }
+        setTags(merged);
       }
       if (result.insight) {
         setAiInsight(result.insight);
@@ -215,6 +241,32 @@ export const JournalView: React.FC<JournalViewProps> = ({
     );
   };
 
+  const heroGreeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      return {
+        title: "Good morning 🌿",
+        subtitle: "Take a deep breath. You've got this.",
+      };
+    }
+    if (hour >= 12 && hour < 17) {
+      return {
+        title: "Good afternoon 🌿",
+        subtitle: "Pause for a moment and recharge.",
+      };
+    }
+    if (hour >= 17 && hour < 21) {
+      return {
+        title: "Good evening 🌿",
+        subtitle: "Unwind and reflect on your day.",
+      };
+    }
+    return {
+      title: "Good night 🌿",
+      subtitle: "Rest your mind. You did enough today.",
+    };
+  }, []);
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-8 text-stone-100">
       {/* 1. Hero Banner matching FIRST Reference Image */}
@@ -230,11 +282,10 @@ export const JournalView: React.FC<JournalViewProps> = ({
         {/* Hero Left Content */}
         <div className="relative z-10 max-w-lg space-y-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#f4f6f4] font-medium tracking-tight flex items-center gap-2">
-            <span>Good morning</span>
-            <span className="text-emerald-400 select-none">🌿</span>
+            <span>{heroGreeting.title}</span>
           </h1>
           <p className="text-xs sm:text-sm text-stone-300 font-sans">
-            Take a deep breath. You've got this.
+            {heroGreeting.subtitle}
           </p>
 
           <div className="flex items-center gap-3 pt-2 flex-wrap">
@@ -399,67 +450,115 @@ export const JournalView: React.FC<JournalViewProps> = ({
           </div>
 
           {/* Tags & Themes */}
-          <div>
-            <label className="block text-xs font-medium text-stone-400 mb-2">Tags &amp; Themes</label>
-            <div className="flex flex-wrap items-center gap-2">
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-medium text-stone-400">
+                Tags &amp; Themes <span className="text-stone-500 font-mono">({tags.length}/{MAX_TAGS})</span>
+              </label>
+              <span className="text-[11px] text-stone-500">Separate multiple tags with commas or press Enter</span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 p-3 bg-[#080d0a] border border-[#1d2a23] rounded-2xl min-h-[48px]">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1.5 bg-[#1a2820] border border-[#283d31] text-stone-200 text-xs px-3 py-1 rounded-xl"
+                  className="inline-flex items-center gap-1.5 bg-[#172b20] border border-[#274533] text-emerald-200 text-xs px-3 py-1 rounded-xl shadow-xs animate-in fade-in"
                 >
-                  <span>#{tag}</span>
+                  <span className="font-mono">#{tag}</span>
                   <button
                     type="button"
                     onClick={() => handleRemoveTag(tag)}
-                    className="text-stone-500 hover:text-rose-400 ml-0.5"
+                    className="text-stone-400 hover:text-rose-400 ml-0.5 transition-colors font-bold"
+                    title={`Remove #${tag}`}
                   >
                     ×
                   </button>
                 </span>
               ))}
 
-              <div className="inline-flex items-center gap-1 bg-[#0b100d] border border-[#1d2a23] border-dashed rounded-xl px-3 py-1">
-                <input
-                  type="text"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      handleAddTag();
-                    }
-                  }}
-                  placeholder="+ Add tag"
-                  className="bg-transparent text-xs text-stone-200 placeholder-stone-500 focus:outline-none w-20"
-                />
-              </div>
-
-              <span className="text-emerald-400 select-none text-sm">🌿</span>
+              {tags.length < MAX_TAGS ? (
+                <div className="inline-flex items-center gap-1.5 bg-[#0d1611] border border-[#1d2a23] focus-within:border-[#2e6243] rounded-xl px-3 py-1 transition-colors flex-1 min-w-[160px] max-w-xs">
+                  <span className="text-stone-500 text-xs font-mono">#</span>
+                  <input
+                    id="input-add-tag"
+                    type="text"
+                    value={tagInput}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val.includes(',')) {
+                        handleAddTag(val);
+                      } else {
+                        setTagInput(val);
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleAddTag();
+                      }
+                    }}
+                    placeholder={tags.length === 0 ? "Add tags (e.g. Work, Calm)..." : "+ Add tag..."}
+                    className="bg-transparent text-xs text-stone-200 placeholder-stone-500 focus:outline-none w-full"
+                  />
+                  {tagInput.trim() && (
+                    <button
+                      type="button"
+                      onClick={() => handleAddTag()}
+                      className="text-[11px] bg-[#183a27] text-emerald-300 hover:bg-[#204a32] px-2 py-0.5 rounded-md font-medium shrink-0 transition-colors"
+                    >
+                      + Add
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <span className="text-[11px] text-amber-400/90 italic px-2 py-1 bg-[#1a170b] border border-[#3b3215] rounded-xl">
+                  Max 10 tags reached
+                </span>
+              )}
             </div>
+
+            {/* Quick Suggested Tags */}
+            {tags.length < MAX_TAGS && (
+              <div className="flex items-center gap-1.5 flex-wrap pt-1 text-[11px] text-stone-400">
+                <span className="text-stone-500">Quick suggestions:</span>
+                {SUGGESTED_TAGS.filter((st) => !tags.some((t) => t.toLowerCase() === st.toLowerCase()))
+                  .slice(0, 6)
+                  .map((st) => (
+                    <button
+                      key={st}
+                      type="button"
+                      onClick={() => handleAddTag(st)}
+                      className="px-2 py-0.5 rounded-lg bg-[#0b100d] hover:bg-[#15241b] text-stone-300 hover:text-emerald-300 border border-[#1d2a23] hover:border-[#2b4c37] transition-colors cursor-pointer"
+                    >
+                      + #{st}
+                    </button>
+                  ))}
+              </div>
+            )}
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-2.5 pt-2">
+          <div className="space-y-3 pt-2">
             <button
               id="btn-analyze-entry"
               type="button"
               onClick={handleAnalyzeWithMana}
               disabled={!content.trim() || isAnalyzing}
-              className="w-full bg-[#111a14] hover:bg-[#16221a] border border-[#223529] text-stone-200 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer disabled:opacity-50"
+              className="group w-full bg-[#121f18]/70 hover:bg-[#1a2c22]/80 backdrop-blur-md border border-[#2d523c] hover:border-[#427c59] text-stone-200 hover:text-white py-3 rounded-2xl text-xs sm:text-sm font-medium flex items-center justify-center gap-2.5 transition-all duration-200 hover:scale-[1.008] shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.2)] cursor-pointer disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none"
             >
-              <Sparkles className={`w-4 h-4 text-[#4ade80] ${isAnalyzing ? 'animate-spin' : ''}`} />
-              <span>{isAnalyzing ? 'Mana is analyzing...' : 'Analyze with Mana (Flash-Lite)'}</span>
+              <div className="p-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-[0_0_10px_rgba(16,185,129,0.25)] group-hover:shadow-[0_0_15px_rgba(52,211,153,0.45)] group-hover:bg-emerald-500/30 transition-all">
+                <Sparkles className={`w-4 h-4 text-emerald-300 ${isAnalyzing ? 'animate-spin' : ''}`} />
+              </div>
+              <span className="tracking-wide">{isAnalyzing ? 'Mana is analyzing...' : 'Analyze with Mana (Flash-Lite)'}</span>
             </button>
 
             <button
               id="btn-save-journal"
               type="submit"
               disabled={!content.trim()}
-              className="w-full bg-gradient-to-r from-[#174d31] via-[#1e5c3c] to-[#144229] hover:from-[#1c5a3a] hover:to-[#174c30] text-stone-100 font-medium py-3 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 transition-all border border-[#2b754b] relative overflow-hidden cursor-pointer disabled:opacity-50"
+              className="w-full bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:from-emerald-400 hover:via-emerald-500 hover:to-emerald-600 text-white font-semibold py-3.5 rounded-2xl text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-[0_4px_24px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_32px_rgba(16,185,129,0.5)] hover:scale-[1.008] transition-all duration-200 border border-emerald-400/40 cursor-pointer disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none"
             >
-              <span className="select-none">💚</span>
-              <span>{editingId ? 'Update Entry' : 'Save to Journal'}</span>
-              <span className="absolute right-4 text-emerald-300 text-sm opacity-80 select-none">🌿</span>
+              <span className="tracking-wide text-white drop-shadow-xs">{editingId ? 'Update Entry' : 'Save to Journal'}</span>
             </button>
           </div>
         </form>
