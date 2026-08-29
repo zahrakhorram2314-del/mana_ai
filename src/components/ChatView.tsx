@@ -415,12 +415,12 @@ export const ChatView: React.FC<ChatViewProps> = ({
 
       {/* Suggested Starters if conversation is short */}
       {messages.length <= 2 && (
-        <div className="mb-2 flex flex-wrap gap-1.5 shrink-0">
+        <div className="mb-2 flex flex-wrap gap-2 shrink-0">
           {quickPrompts.map((prompt, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(prompt)}
-              className="text-[11px] bg-stone-900/90 hover:bg-stone-800 border border-stone-800 text-stone-300 px-3 py-1 rounded-full transition-colors truncate max-w-full text-left"
+              className="text-[11px] bg-[#121915]/60 hover:bg-[#1b2b21]/80 backdrop-blur-md border border-emerald-500/20 hover:border-emerald-500/40 text-stone-300 hover:text-emerald-200 px-3.5 py-1.5 rounded-full transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(16,185,129,0.15)] active:scale-[0.98] truncate max-w-full text-left cursor-pointer"
             >
               ✦ {prompt}
             </button>
@@ -428,14 +428,14 @@ export const ChatView: React.FC<ChatViewProps> = ({
         </div>
       )}
 
-      {/* Input Form */}
-      <div className="bg-stone-900 border border-stone-800 rounded-2xl p-2.5 shadow-xl shrink-0">
+      {/* Input Form Wrapper with sleek glass container and ambient dark-emerald backlight / glow */}
+      <div className="bg-[#121915]/80 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_20px_rgba(16,185,129,0.06)] shrink-0 relative overflow-hidden">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSendMessage();
           }}
-          className="flex items-end gap-2"
+          className="flex items-end gap-2.5 relative z-10"
         >
           <textarea
             ref={textareaRef}
@@ -449,16 +449,16 @@ export const ChatView: React.FC<ChatViewProps> = ({
               }
             }}
             placeholder="Share what's on your mind... (Shift+Enter for new line)"
-            className="flex-1 bg-stone-950 border border-stone-800 rounded-xl p-3 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 resize-none font-sans"
+            className="flex-1 bg-[#080d0a]/90 border border-[#1d2a23] focus:border-emerald-500/45 rounded-2xl p-3.5 text-sm text-[#f4f6f4] placeholder-stone-500 focus:outline-none resize-none font-sans shadow-inner transition-colors duration-200"
           />
 
           <button
             id="btn-send-message"
             type="submit"
             disabled={!inputText.trim() || isSending}
-            className="p-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-emerald-950/50 cursor-pointer shrink-0"
+            className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-600 to-emerald-800 hover:from-emerald-300 hover:via-emerald-500 hover:to-emerald-700 active:scale-95 text-white transition-all duration-200 disabled:opacity-40 disabled:scale-100 disabled:hover:shadow-none disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(52,211,153,0.5)] cursor-pointer shrink-0"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-4 h-4 text-white filter drop-shadow-xs" />
           </button>
         </form>
       </div>
