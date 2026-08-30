@@ -9,7 +9,8 @@
 ## 🔗 Live Demo & Links
 * **Interactive Prototype (Google Studio):** https://ai.studio/apps/b7a5d027-b635-4886-8a4e-faad7a7c613f
 * Codelab
-* **GitHub Repository:** https://github.com/zahrakhorram2314-del/coffee-shop-ai-agent  Task 3
+* **GitHub Repository:**
+* https://github.com/zahrakhorram2314-del/coffee-shop-ai-agent  Task 3
 * https://github.com/zahrakhorram2314-del/bigquery-mcp-agent  Task 2
 * https://github.com/zahrakhorram2314-del/gemini-rag-demo/tree/main  Task1
 
