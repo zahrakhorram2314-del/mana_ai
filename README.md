@@ -8,7 +8,7 @@
 
 ## 🔗 Live Demo & Links
 * **Interactive Prototype (Google Studio):** https://ai.studio/apps/b7a5d027-b635-4886-8a4e-faad7a7c613f
-* **GitHub Repository:** https://github.com/zahrakhorram2314-del/mana_ai
+* **GitHub Repository:** https://github.com/zahrakhorram2314-del/coffee-shop-ai-agent
 
 
 ## 🛠️ Technical Architecture & Google Cloud Integration
