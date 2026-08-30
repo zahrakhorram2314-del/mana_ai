@@ -27,12 +27,11 @@ COPY package*.json ./
 RUN npm install --only=production
 
 # Copy built assets and server file
-COPY --from = builder /app/dist ./dist
-COPY --from = builder /app/server.ts ./
-COPY --from = builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/server.ts ./
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 8080
 
 # Run backend application server
 CMD ["npx", "tsx", "server.ts"]
-
