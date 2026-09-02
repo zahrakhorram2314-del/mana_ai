@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Lock, Mail, User, Eye, EyeOff, Shield, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Lock, Mail, User, Eye, EyeOff, Shield, Sparkles, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { authenticateWithEmail, createDemoSession, signInWithGoogle } from '../lib/firebaseAuth';
 import { UserProfile } from '../types';
 
@@ -64,32 +65,39 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md">
-      <div className="w-full max-w-md bg-stone-900 border border-stone-800 rounded-2xl shadow-2xl overflow-hidden text-stone-100 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md overflow-y-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-md bg-stone-900 border border-emerald-500/30 rounded-2xl shadow-[0_0_50px_-10px_rgba(16,185,129,0.22),0_20px_45px_rgba(0,0,0,0.7)] overflow-hidden text-stone-100 relative"
+      >
+        {/* Ambient Top Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-emerald-500/15 blur-2xl pointer-events-none -z-0" />
+
         {/* Header decoration */}
-        <div className="bg-gradient-to-br from-emerald-900/40 via-stone-900 to-stone-900 p-6 border-b border-stone-800 text-center relative">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-2xl mb-3 shadow-inner shadow-emerald-500/20">
-            🌿
-          </div>
-          <h2 className="text-2xl font-serif font-bold text-stone-50 tracking-tight">Mana</h2>
+        <div className="bg-gradient-to-br from-emerald-950/60 via-stone-900 to-stone-900 p-6 border-b border-stone-800/80 text-center relative z-10">
+          <h2 className="text-2xl font-serif font-bold text-stone-50 tracking-tight">
+            Mana
+          </h2>
           <p className="text-sm text-stone-400 mt-1">
             Empathetic AI Journal & Self-Reflection Companion
           </p>
-          <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-950/70 border border-emerald-500/30 text-emerald-300">
-            <Shield className="w-3 h-3 text-emerald-400" />
+          <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 shadow-xs">
+            <Shield className="w-3 h-3 text-emerald-400 shrink-0" />
             <span>Firebase Authentication & Isolated Data Storage</span>
           </div>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex border-b border-stone-800 bg-stone-950/40">
+        <div className="flex border-b border-stone-800 bg-stone-950/50 relative z-10">
           <button
             type="button"
             onClick={() => { setIsSignUp(false); setError(null); }}
-            className={`flex-1 py-3 text-sm font-medium transition-colors ${
+            className={`flex-1 py-3 text-sm font-medium transition-all duration-200 cursor-pointer ${
               !isSignUp
-                ? 'text-emerald-400 border-b-2 border-emerald-500 bg-stone-900/50'
-                : 'text-stone-400 hover:text-stone-200'
+                ? 'text-emerald-400 border-b-2 border-emerald-500 bg-stone-900/70 shadow-xs'
+                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-900/30'
             }`}
           >
             Sign In
@@ -97,10 +105,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
           <button
             type="button"
             onClick={() => { setIsSignUp(true); setError(null); }}
-            className={`flex-1 py-3 text-sm font-medium transition-colors ${
+            className={`flex-1 py-3 text-sm font-medium transition-all duration-200 cursor-pointer ${
               isSignUp
-                ? 'text-emerald-400 border-b-2 border-emerald-500 bg-stone-900/50'
-                : 'text-stone-400 hover:text-stone-200'
+                ? 'text-emerald-400 border-b-2 border-emerald-500 bg-stone-900/70 shadow-xs'
+                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-900/30'
             }`}
           >
             Create Account
@@ -108,12 +116,16 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
         </div>
 
         {/* Form Body */}
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 relative z-10">
           {error && (
-            <div className="p-3 rounded-lg bg-rose-950/50 border border-rose-800/60 text-rose-300 text-xs flex items-start gap-2">
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-3 rounded-lg bg-rose-950/50 border border-rose-800/60 text-rose-300 text-xs flex items-start gap-2"
+            >
               <span className="text-rose-400 font-bold">!</span>
               <span>{error}</span>
-            </div>
+            </motion.div>
           )}
 
           {/* Google Sign-In Option */}
@@ -122,7 +134,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
             type="button"
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-stone-100 text-stone-900 font-medium text-sm flex items-center justify-center gap-2.5 shadow-md transition-all duration-150 cursor-pointer disabled:opacity-50"
+            className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-stone-100 text-stone-900 font-medium text-sm flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg hover:shadow-white/10 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path
@@ -156,68 +168,79 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3.5">
-            {isSignUp && (
-              <div>
-                <label className="block text-xs font-medium text-stone-300 mb-1">Your Name / Pseudonym</label>
-                <div className="relative">
-                  <User className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
-                  <input
-                    id="input-displayname"
-                    type="text"
-                    required={isSignUp}
-                    value={displayName}
-                    onChange={(e) => setDisplayName(e.target.value)}
-                    placeholder="e.g. Alex"
-                    className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-                  />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={isSignUp ? 'signup-fields' : 'signin-fields'}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.18, ease: 'easeInOut' }}
+                className="space-y-3.5"
+              >
+                {isSignUp && (
+                  <div>
+                    <label className="block text-xs font-medium text-stone-300 mb-1">Your Name / Pseudonym</label>
+                    <div className="relative">
+                      <User className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
+                      <input
+                        id="input-displayname"
+                        type="text"
+                        required={isSignUp}
+                        value={displayName}
+                        onChange={(e) => setDisplayName(e.target.value)}
+                        placeholder="e.g. Alex"
+                        className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-xs font-medium text-stone-300 mb-1">Email Address</label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
+                    <input
+                      id="input-email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="name@example.com"
+                      className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
 
-            <div>
-              <label className="block text-xs font-medium text-stone-300 mb-1">Email Address</label>
-              <div className="relative">
-                <Mail className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
-                <input
-                  id="input-email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com"
-                  className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-3 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-medium text-stone-300 mb-1">Password</label>
-              <div className="relative">
-                <Lock className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
-                <input
-                  id="input-password"
-                  type={showPassword ? 'text' : 'password'}
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="At least 6 characters"
-                  className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-10 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-3 text-stone-500 hover:text-stone-300"
-                >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </div>
-            </div>
+                <div>
+                  <label className="block text-xs font-medium text-stone-300 mb-1">Password</label>
+                  <div className="relative">
+                    <Lock className="w-4 h-4 text-stone-500 absolute left-3 top-3" />
+                    <input
+                      id="input-password"
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="At least 6 characters"
+                      className="w-full bg-stone-950/80 border border-stone-800 rounded-xl pl-9 pr-10 py-2 text-sm text-stone-100 placeholder-stone-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-3 text-stone-500 hover:text-stone-300 transition-colors cursor-pointer"
+                    >
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             <button
               id="btn-auth-submit"
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 transition-all disabled:opacity-50 cursor-pointer"
+              className="w-full mt-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 hover:shadow-[0_0_22px_rgba(16,185,129,0.35)] hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 cursor-pointer"
             >
               {loading ? (
                 <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -246,7 +269,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
             type="button"
             onClick={handleGuestLogin}
             disabled={loading}
-            className="w-full py-2 px-4 rounded-xl bg-stone-800/80 hover:bg-stone-800 border border-stone-700/70 text-stone-200 text-xs font-medium flex items-center justify-center gap-2 transition-colors"
+            className="w-full py-2 px-4 rounded-xl bg-stone-800/80 hover:bg-stone-800 hover:border-emerald-500/40 hover:text-white hover:scale-[1.01] active:scale-[0.99] border border-stone-700/70 text-stone-200 text-xs font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:scale-100"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span>Instant Demo Session (Guest Mode)</span>
@@ -257,7 +280,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
             🔒 <span className="font-semibold text-stone-400">Isolated & Private:</span> Your journal entries and AI conversations are securely partitioned under your Firebase UID.
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
+

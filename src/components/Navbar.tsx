@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, MessageSquareHeart, Sparkles, Key, LogOut, Copy, Check, Wind } from 'lucide-react';
 import { UserProfile } from '../types';
+import { ManaSilhouetteIcon } from './ManaFaceLogo';
 
 interface NavbarProps {
   user: UserProfile | null;
@@ -39,8 +40,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20 gap-2">
           {/* Logo & Identity */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#143322] border border-[#235237] text-[#4ade80] flex items-center justify-center shadow-lg shadow-emerald-950/40 shrink-0">
-              <span className="text-xl select-none">🌱</span>
+            <div className="w-10 h-10 rounded-2xl bg-[#143322] border border-[#235237] text-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-950/40 shrink-0">
+              <ManaSilhouetteIcon className="w-6 h-6 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.7)]" size={24} />
             </div>
             <div>
               <div className="flex items-center gap-2">
