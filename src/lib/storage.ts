@@ -42,7 +42,7 @@ export function getSampleChat(userId: string): ChatMessage[] {
       id: `init-mana-${userId}`,
       userId,
       sender: 'mana',
-      text: "Hello! I'm Mana 🌿\n\nI'm your warm, supportive friend and AI journaling companion. I'm here to help you reflect, document your day, and organize your thoughts through simple, stress-free micro-journaling.\n\n*(A quick friendly note: I am an AI companion here to listen and encourage you, not a licensed medical or clinical professional.)*\n\nHow is your mind and heart feeling today? Do you prefer responses to be short and concise, or would you like more detailed explanations?",
+      text: "Hello! I'm Mana 🌿\n\nI'm your AI journaling companion. I'm here to help you reflect, organize your thoughts, summarize your journal entries, and gain clear perspective on your day.\n\n*(A quick note: I'm here for personal reflection and organization, not medical or therapeutic advice.)*\n\nHow has your day been going, or what would you like to explore today?",
       timestamp: new Date().toISOString(),
       mode: 'balanced',
     },

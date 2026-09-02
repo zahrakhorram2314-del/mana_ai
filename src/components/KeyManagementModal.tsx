@@ -141,22 +141,22 @@ export const KeyManagementModal: React.FC<KeyManagementModalProps> = ({
           {/* Supported Engine Models Information */}
           <div className="space-y-2 pt-1">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-400">
-              Active Gemini 2.5 & 3 Series Architecture
+              Active Gemini 3 Series Architecture
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
               <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 flex flex-col gap-1">
                 <div className="flex items-center gap-1.5 text-emerald-400 font-medium">
                   <Compass className="w-3.5 h-3.5" />
-                  <span>Balanced</span>
+                  <span>Balanced (3.6 Flash)</span>
                 </div>
-                <span className="text-[11px] text-stone-300 font-mono">gemini-2.5-flash</span>
+                <span className="text-[11px] text-stone-300 font-mono">gemini-3.6-flash</span>
                 <span className="text-[10px] text-stone-400">Default for rich journaling & deep empathy</span>
               </div>
 
               <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 flex flex-col gap-1">
                 <div className="flex items-center gap-1.5 text-cyan-400 font-medium">
                   <Zap className="w-3.5 h-3.5" />
-                  <span>Low-Latency</span>
+                  <span>Low Latency (3.1 Flash-Lite)</span>
                 </div>
                 <span className="text-[11px] text-stone-300 font-mono">gemini-3.1-flash-lite</span>
                 <span className="text-[10px] text-stone-400">Instant mood tags & quick brainstorming</span>
@@ -165,10 +165,10 @@ export const KeyManagementModal: React.FC<KeyManagementModalProps> = ({
               <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 flex flex-col gap-1">
                 <div className="flex items-center gap-1.5 text-purple-400 font-medium">
                   <Cpu className="w-3.5 h-3.5" />
-                  <span>High Thinking</span>
+                  <span>High Thinking (3.6 Thinking)</span>
                 </div>
-                <span className="text-[11px] text-stone-300 font-mono">gemini-3.1-pro-preview</span>
-                <span className="text-[10px] text-stone-400">ThinkingLevel.HIGH for complex inquiries</span>
+                <span className="text-[11px] text-stone-300 font-mono">gemini-3.6-thinking</span>
+                <span className="text-[10px] text-stone-400">ThinkingLevel.HIGH for deep reflection</span>
               </div>
             </div>
           </div>

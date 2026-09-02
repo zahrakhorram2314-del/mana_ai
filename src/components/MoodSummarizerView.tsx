@@ -7,6 +7,7 @@ import {
 import confetti from 'canvas-confetti';
 import { DailySummary, JournalEntry } from '../types';
 import { summarizeJournalEntries } from '../lib/geminiApi';
+import { MonthlyActivityChart } from './MonthlyActivityChart';
 
 interface MoodSummarizerViewProps {
   userId: string;
@@ -240,6 +241,9 @@ ${summary.gratitudeAndStrengths.map((g) => `✦ ${g}`).join('\n')}
           </div>
         </div>
       </div>
+
+      {/* Monthly Activity Analytics Chart */}
+      <MonthlyActivityChart entries={entries} />
 
       {/* Main Results Showcase: Active Summary Card */}
       {currentSummary ? (
