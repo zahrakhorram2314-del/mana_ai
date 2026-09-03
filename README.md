@@ -13,9 +13,9 @@ https://mana-ai.onrender.com/
 
 * Codelab
 * **GitHub Repository:**
-* https://github.com/zahrakhorram2314-del/coffee-shop-ai-agent  Task 3
-* https://github.com/zahrakhorram2314-del/bigquery-mcp-agent  Task 2
-* https://github.com/zahrakhorram2314-del/gemini-rag-demo/tree/main  Task1
+* https://github.com/zahrakhorram2314-del/coffee-shop-ai-agent  `Task 3`
+* https://github.com/zahrakhorram2314-del/bigquery-mcp-agent  `Task 2`
+* https://github.com/zahrakhorram2314-del/gemini-rag-demo/tree/main  `Task1`
 
 
 ## 🛠️ Technical Architecture & Google Cloud Integration
