@@ -7,9 +7,8 @@
 **Mana** is a secure, intelligent personal journal that redefines how users interact with AI. Moving away from the conventional "fast-paced productivity" AI tools, Mana embraces **Positive Friction** and **Human-Computer Interaction (HCI)** principles to create a digital sanctuary. It encourages users to pause, breathe, and mindfully reflect on their emotions, utilizing AI as a supportive, empathetic listener rather than just a text generator.
 
 ## 🔗 Live Demo & Links
-* **Interactive Prototype (Google Studio):** https://ai.studio/apps/b7a5d027-b635-4886-8a4e-faad7a7c613f
-
-https://mana-ai.onrender.com/
+* **Interactive Prototype 
+https://mana-ai-journal-app.ai.studio
 
 * Codelab
 * **GitHub Repository:**
