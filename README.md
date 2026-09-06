@@ -13,7 +13,7 @@
 
 ## 🔗 Live Demo & Links
 
-* **Interactive Prototype:** [Mana AI Studio App](https://journal-app.ai.studio)
+* **Interactive Prototype:** [ https://mana-ai-journal-app.ai.studio/ )
 * **GitHub Repository:** [Mana Repository](https://github.com)
 
 ---
