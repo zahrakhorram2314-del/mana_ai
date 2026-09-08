@@ -16,15 +16,20 @@
 * **Interactive Prototype:** [ https://mana-ai-journal-app.ai.studio/ )
 * **GitHub Repository:** [Mana Repository](https://github.com)
 
-## 📸 App Screenshots
+---
 
-| Journal Entry | Summary Dashboard |
+## 📸 Application Preview & Core Features
+
+| 📝 New Journal Entry | 📊 Emotional Summary Dashboard |
 | :---: | :---: |
 | ![Journal Entry](Journal-entry.png) | ![Summary Dashboard](summary-dashboard.png) |
 
-| Wellness Sanctuary | Mana Reflection |
+| 🧘 Peace & Wellness Sanctuary | 💬 Mana Reflection Space |
 | :---: | :---: |
 | ![Wellness Sanctuary](wellness-sanctuary.png) | ![Mana Reflection](mana-reflection.png) |
+
+---
+
 
 ---
 
