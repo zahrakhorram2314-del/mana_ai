@@ -18,15 +18,17 @@
 
 ---
 
+---
+
 ## 📸 Application Preview & Core Features
 
 | 📝 New Journal Entry | 📊 Emotional Summary Dashboard |
 | :---: | :---: |
-| ![Journal Entry](Journal-entry.png) | ![Summary Dashboard](summary-dashboard.png) |
+| ![Journal Entry](11004.jpg) | ![Summary Dashboard](11005.jpg) |
 
 | 🧘 Peace & Wellness Sanctuary | 💬 Mana Reflection Space |
 | :---: | :---: |
-| ![Wellness Sanctuary](wellness-sanctuary.png) | ![Mana Reflection](mana-reflection.png) |
+| ![Wellness Sanctuary](11006.jpg) | ![Mana Reflection](11009.jpg) |
 
 ---
 
