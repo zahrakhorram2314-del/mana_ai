@@ -16,6 +16,16 @@
 * **Interactive Prototype:** [ https://mana-ai-journal-app.ai.studio/ )
 * **GitHub Repository:** [Mana Repository](https://github.com)
 
+## 📸 App Screenshots
+
+| Journal Entry | Summary Dashboard |
+| :---: | :---: |
+| ![Journal Entry](Journal-entry.png) | ![Summary Dashboard](summary-dashboard.png) |
+
+| Wellness Sanctuary | Mana Reflection |
+| :---: | :---: |
+| ![Wellness Sanctuary](wellness-sanctuary.png) | ![Mana Reflection](mana-reflection.png) |
+
 ---
 
 ## 🛠️ Technical Architecture & Google Cloud Integration
