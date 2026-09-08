@@ -17,16 +17,16 @@
 * **GitHub Repository:** [Mana Repository](https://github.com)
 
 ---
----
 
 ## 📸 Application Preview & Core Features
 
 | 📝 New Journal Entry | 📊 Emotional Summary Dashboard |
 | :---: | :---: |
-| ![Journal Entry](Screenshot_2024-09-08_Chrome.jpg) | ![Summary Dashboard](Screenshot_2024-09-08_Chrome.jpg) |
+| ![Journal Entry](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۲۶_Chrome.jpg) | ![Summary Dashboard](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۳۶_Chrome.jpg) |
 
----
-
+| 🧘 Peace & Wellness Sanctuary | 💬 Mana Reflection Space |
+| :---: | :---: |
+| ![Wellness Sanctuary](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۴۴_Chrome.jpg) | ![Mana Reflection](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۲۱۲_Chrome.jpg) |
 
 ---
 
