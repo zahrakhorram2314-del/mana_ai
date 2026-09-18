@@ -6,20 +6,41 @@ export interface ChatApiMessage {
   content: string;
 }
 
+// Clear non-medical disclaimer adhering to Responsible AI standards
+export const NON_MEDICAL_DISCLAIMER = 
+  "Mana is a personal reflection tool designed for self-growth and organization, not medical or therapeutic advice.";
+
+export interface AnalysisResponse {
+  mood: string;
+  moodScore: number;
+  tags: string[];
+  insight: string;
+  recommendedAction?: {
+    type: 'reflection_prompt' | 'breathing_exercise' | 'gratitude_note';
+    title: string;
+    description: string;
+  };
+}
+
+/**
+ * Gentle error handling based on Cognitive UX principles
+ * Prevents technical stress and maintains a calm user experience
+ */
 async function parseJsonResponse<T>(response: Response, defaultErrorMsg: string): Promise<T> {
   const text = await response.text();
   let data: any = {};
+  
   try {
     data = JSON.parse(text);
   } catch {
     if (!response.ok) {
-      throw new Error(`${defaultErrorMsg} (Server returned HTTP ${response.status})`);
+      throw new Error(`Mana needs a moment to pause. Please check your connection or key and try again gently.`);
     }
-    throw new Error('Server returned invalid format. Please try again.');
+    throw new Error('Mana received an unusual format. Let’s try that reflection once more.');
   }
 
   if (!response.ok) {
-    const errorMsg = data.error || data.hint || `${defaultErrorMsg} (Server returned HTTP ${response.status})`;
+    const errorMsg = data.error || data.hint || `${defaultErrorMsg} (HTTP ${response.status})`;
     throw new Error(errorMsg);
   }
 
@@ -53,7 +74,7 @@ export async function chatWithMana(
     reply: string;
     modelUsed: string;
     groundingMetadata?: any;
-  }>(response, 'Mana was unable to respond');
+  }>(response, 'Mana is temporarily taking a deep breath');
 
   return {
     reply: data.reply,
@@ -83,15 +104,18 @@ export async function summarizeJournalEntries(
 
   const data = await parseJsonResponse<{
     summary: Omit<DailySummary, 'id' | 'userId' | 'createdAt'>;
-  }>(response, 'Summarization failed');
+  }>(response, 'Summarization paused');
 
   return { summary: data.summary };
 }
 
+/**
+ * Journal Entry Analysis: Receives non-medical, self-reflection insights and actions
+ */
 export async function analyzeJournalEntry(
   title: string,
   content: string
-): Promise<{ mood: string; moodScore: number; tags: string[]; insight: string }> {
+): Promise<AnalysisResponse> {
   const customKey = getStoredGeminiKey();
 
   const response = await fetch('/api/analyze-entry', {
@@ -107,9 +131,9 @@ export async function analyzeJournalEntry(
     }),
   });
 
-  return parseJsonResponse<{ mood: string; moodScore: number; tags: string[]; insight: string }>(
+  return parseJsonResponse<AnalysisResponse>(
     response,
-    'Analysis failed'
+    'Analysis took a pause'
   );
 }
 
@@ -134,7 +158,7 @@ export async function generateJournalPrompts(
 
   const data = await parseJsonResponse<{
     prompts: { title: string; prompt: string; category: string }[];
-  }>(response, 'Prompt generation failed');
+  }>(response, 'Prompt generation paused');
 
   return data.prompts || [];
 }
