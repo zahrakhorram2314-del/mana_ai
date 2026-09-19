@@ -51,10 +51,13 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 
 ---
 
-## 💻 How to Run Locally
+### 💻 How to Run Locally
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/zahrakhorram2314-del/mana_ai/edit/main/README.md
+cd mana_ai
+
 npm install
 npm run dev
