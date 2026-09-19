@@ -7,8 +7,9 @@
 
 ## 📣 Elevator Pitch
 
-**Mana** is a serene, intelligent personal journal that redefined how users interact with AI. Moving away from conventional "fast-paced productivity" AI tools, Mana introduces **Positive Friction in Human-Computer Interaction (HCI)** to create a digital sanctuary. It encourages users to pause, breathe, and mindfully reflect on their emotions, utilizing Gemini as a supportive, empathetic listener rather than just a text generator.
+Mana is a calm, AI-powered personal journal designed to make digital reflection feel more mindful and human. Instead of focusing on fast-paced productivity, Mana introduces the idea of Positive Friction in Human-Computer Interaction (HCI) by encouraging users to pause, breathe, and reflect before writing.
 
+Powered by Gemini, Mana acts as a supportive reflection companion rather than simply generating text, helping users explore their thoughts and emotions through a more thoughtful interaction.
 ---
 
 ## 🔗 Live Demo & Links
