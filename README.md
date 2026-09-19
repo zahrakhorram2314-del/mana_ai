@@ -42,7 +42,7 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 
 ---
 
-##🌟 Core Features & UX Philosophy
+## 🌟 Core Features & UX Philosophy
 
 Guided Emotional Reflection
 Instead of a blank screen, Mana greets users with breathing exercises, such as 4-4-4 Box Breathing, to help users pause and settle before writing.
