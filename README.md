@@ -45,15 +45,19 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 ## 🌟 Core Features & UX Philosophy
 
 Guided Emotional Reflection
+
 Instead of a blank screen, Mana greets users with breathing exercises, such as 4-4-4 Box Breathing, to help users pause and settle before writing.
 
 AI-Powered Synthesis
+
 Mana uses Gemini to transform journal entries into structured emotional insights, highlighting resilience and providing gentle prompts for further reflection.
 
 Privacy & Safety by Design
-Mana operates as a supportive journaling companion with clear boundaries, designed to support self-reflection and emotional wellbeing rather than act as a medical therapist.
+
+Mana operates as a supportive journaling companion with clear boundaries, designed to support self-reflection and emotional wellbeing rather than serve as a medical therapist.
 
 Mindful AI Persona
+
 Carefully designed system instructions guide Gemini to provide warm, non-judgmental responses that are sensitive to the user's current context.
 ---
 
