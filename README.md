@@ -9,6 +9,7 @@
 
 Mana is a calm, AI-powered personal journal designed to make digital reflection feel more mindful and human. Instead of focusing on fast-paced productivity, Mana introduces the idea of Positive Friction in Human-Computer Interaction (HCI) by encouraging users to pause, breathe, and reflect before writing.
 
+
 Powered by Gemini, Mana acts as a supportive reflection companion rather than simply generating text, helping users explore their thoughts and emotions through a more thoughtful interaction.
 ---
 
@@ -58,6 +59,7 @@ Privacy & Safety by Design
 Mana operates as a supportive journaling companion with clear boundaries, designed to support self-reflection and emotional wellbeing rather than serve as a medical therapist.
 
 Mindful AI Persona
+
 
 Carefully designed system instructions guide Gemini to provide warm, non-judgmental responses that are sensitive to the user's current context.
 ---
