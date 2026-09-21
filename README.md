@@ -1,7 +1,7 @@
 # 🌿 Mana: Empathetic AI Journal & Self-Reflection Companion
 
 **Google Cloud Run AI Hackathon Submission**  
-**Developed by:** Zahra
+**Developed by:** Zahra Khorram 
 
 ---
 
