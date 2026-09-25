@@ -1,4 +1,5 @@
-## <img src="./leaves.gif" width="28" /> Elevator Pitch
+## <img src="./leaves.gif" width="28" />
+
  Mana: Empathetic AI Journal & Self-Reflection Companion
 
 **Google Cloud Run AI Hackathon Submission**  
