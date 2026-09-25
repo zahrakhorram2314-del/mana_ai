@@ -54,7 +54,7 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 
 ---
 
-## 🌟 Core Features & UX Philosophy
+## <img src="./glowing-star.gif" width="28" /> Core Features & UX Philosophy
 
 Guided Emotional Reflection
 
