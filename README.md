@@ -1,4 +1,5 @@
-# 🌿 Mana: Empathetic AI Journal & Self-Reflection Companion
+## <img src="./leaves.gif" width="28" /> Elevator Pitch
+ Mana: Empathetic AI Journal & Self-Reflection Companion
 
 **Google Cloud Run AI Hackathon Submission**  
 **Developed by:** Zahra Khorram 
