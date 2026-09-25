@@ -30,7 +30,7 @@ Powered by Gemini, Mana acts as a supportive reflection companion rather than si
 * 📝 **Medium Article:** [Read the Case Study](https://zahrakhorram2314.medium.com/mana-where-psychology-meets-ai-for-better-self-reflection-51b767ed5996)
 ---
 
-## 📸 Application Preview & Core Features
+## <img src="./camera-flash.gif" width="28" /> Application Preview & Core Features
 
 | 📝 New Journal Entry | 📊 Emotional Summary Dashboard |
 | :---: | :---: |
