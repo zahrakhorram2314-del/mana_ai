@@ -68,6 +68,16 @@ Mindful AI Persona
 Carefully designed system instructions guide Gemini to provide warm, non-judgmental responses that are sensitive to the user's current context.
 ---
 
+## 🛡️ Responsible AI & Ethical Guardrails
+
+Mana AI is built in explicit alignment with **Google’s Responsible AI Principles**, ensuring that generative capabilities serve human well-being safely and transparently.
+
+* **Non-Clinical Boundary (Safety & Social Benefit):** Designed strictly for supportive self-reflection and daily journaling. Systematic system instructions explicitly prevent the model from providing psychiatric diagnoses, clinical advice, or acting as a licensed therapist.
+* **Privacy by Design:** User interaction data and reflection logs are isolated and secured using **Google Cloud Firestore Security Rules** and **GCP Secret Manager**, ensuring sensitive personal notes are never exposed or misused.
+* **Cognitive Load & Ergonomics:** Grounded in cognitive psychology, the prompt architecture avoids overwhelming text generation, using structured, calm, and empathetic framing to minimize user mental friction.
+* **Human-in-the-Loop & Agency:** The AI acts strictly as a reflective co-pilot, leaving all emotional evaluation and decision-making fully in the hands of the user.
+___
+
 ### 💻 How to Run Locally
 
 **1. Clone the repository:**
