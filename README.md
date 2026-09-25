@@ -17,7 +17,8 @@ Powered by Gemini, Mana acts as a supportive reflection companion rather than si
 
 * **Interactive Prototype:** [ https://mana-ai-journal-app.ai.studio/ )
 * **GitHub Repository:** [Mana Repository](https://github.com)
-
+**Video Demo (LinkedIn):** [Watch Demo Video on LinkedIn](https://lnkd.in/p/eZENQcwu)
+* 📝 **Medium Article:** [Read the Case Study](https://zahrakhorram2314.medium.com/mana-where-psychology-meets-ai-for-better-self-reflection-51b767ed5996)
 ---
 
 ## 📸 Application Preview & Core Features
