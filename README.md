@@ -83,6 +83,14 @@ Mana AI is built in explicit alignment with **Google’s Responsible AI Principl
 * **Human-in-the-Loop & Agency:** The AI acts strictly as a reflective co-pilot, leaving all emotional evaluation and decision-making fully in the hands of the user.
 ___
 
+## 🗺️ Future Roadmap
+* 🎨 **Figma Interactive Prototypes:** Complete high-fidelity UI design flows and micro-interactions.
+* 📊 **Mood Trend Insights:** Introduce non-intrusive, privacy-first emotional reflection patterns over time.
+* 🌍 **Localization:** Expand prompt architecture for multi-language cognitive UX support.
+
+___
+
+
 ### 💻 How to Run Locally
 
 **1. Clone the repository:**
