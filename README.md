@@ -101,3 +101,8 @@ cd mana_ai
 
 npm install
 npm run dev
+
+
+## 📜 License
+Distributed under the MIT License.
+
