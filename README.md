@@ -1,4 +1,4 @@
-## <img src="./leaves.gif" width="28" /> Mana: Empathetic AI Journal & Self-Reflection Companion
+## <img src="./leaves.gif" width="28" /> Mana: Empathetic AI Journal & Self-Reflection Companion <img src="./leaves.gif" width="28"
 
 **Google Cloud Run AI Hackathon Submission**  
 **Developed by:** Zahra Khorram 
