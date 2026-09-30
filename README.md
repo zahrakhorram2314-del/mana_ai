@@ -21,7 +21,7 @@ Powered by Gemini, Mana acts as a supportive reflection companion rather than si
 
 ## 🔗 Live Demo & Links
 
-* **Interactive Prototype:** [ https://mana-ai-journal-app.ai.studio/ )
+* **Interactive Prototype:** [ https://mana-journal-app-2026.ai.studio/ )
   -
 * **GitHub Repository:** [Mana Repository](https://github.com)
   _
