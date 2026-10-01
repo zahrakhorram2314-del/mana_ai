@@ -52,6 +52,7 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 * **🔐 Google Cloud Secret Manager:** Safeguards critical environmental variables, including the Gemini API keys and Firebase configurations, preventing any credential exposure.
 * **🚀 Google Cloud Run:** Containerized deployment for scalable, low-latency microservices.
 
+---
 
 ### 🧠 Sub-Contextual & Cognitive Memory Architecture
 
