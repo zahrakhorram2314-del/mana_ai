@@ -19,7 +19,7 @@ Mana is a calm, AI-powered personal journal designed to make digital reflection 
 Powered by Gemini, Mana acts as a supportive reflection companion rather than simply generating text, helping users explore their thoughts and emotions through a more thoughtful interaction.
 ---
 
-## 🔗 Live Demo & Links
+## <img src="./leaves.gif" width="28" />Live Demo & Links
 
 * **Interactive Prototype:** [ https://mana-journal-app-2026.ai.studio/ )
   -
