@@ -100,13 +100,13 @@ ___
 ___
 
 
+
 ## 💻 How to Run Locally
 
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/zahrakhorram2314-del/mana_ai.git](https://github.com/zahrakhorram2314-del/mana_ai.git)
+git clone https://github.com/zahrakhorram2314-del/mana_ai.git
 cd mana_ai
 npm install
 npm run dev
-
