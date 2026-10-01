@@ -58,7 +58,8 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 
 Grounded in Cognitive Psychology and modern agentic engineering standards, **Mana** employs a sub-contextual approach to balance AI intelligence with human cognitive ergonomics:
 
-* **Bounded Context Lens (L1 Working Memory):** Instead of dumping massive raw chat history into the prompt window, Mana models context as a high-speed *L1 Cache*. Text streams are strictly bounded and structured to eliminate attention degradation, lower response latency, and maintain deterministic empathetic depth.
+* **Bounded Context Window (Short-Term Working Memory):** Instead of dumping massive raw chat history into the prompt window, Mana models context using a dynamic working memory buffer. Text streams are strictly bounded and structured to eliminate attention degradation, lower response latency, and maintain deterministic empathetic depth.
+
 * **Positive Friction & Cognitive Ergonomics:** Rather than encouraging passive content consumption, Mana introduces intentional HCI friction (such as guided box-breathing prompts) to reduce mental friction and encourage deliberate self-reflection.
 * **Deterministic Guardrail Harness:** Non-deterministic LLM generation is strictly bounded by deterministic validation layers, ensuring zero-hallucination boundaries and preventing the system from crossing non-clinical limits.
 
