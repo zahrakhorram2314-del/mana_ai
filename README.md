@@ -92,7 +92,8 @@ ___
 ## 🗺️ Future Roadmap
 * 🎨 **Figma Interactive Prototypes:** Complete high-fidelity UI design flows and micro-interactions.
 * 📊 **Mood Trend Insights:** Introduce non-intrusive, privacy-first emotional reflection patterns over time.
-* 🌍 **Localization:** Expand prompt architecture for multi-language cognitive UX support.
+* 🌐 **Cross-Lingual Benchmarking:** Expanding standardized evaluation datasets for non-English cognitive UX and localized emotional reflection validation.
+
 
 ___
 
