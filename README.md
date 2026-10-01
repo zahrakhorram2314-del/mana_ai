@@ -54,7 +54,7 @@ Mana is built strictly adhering to cloud-native architectural standards, ensurin
 
 ---
 
-### 🧠 Sub-Contextual & Cognitive Memory Architecture
+## <img src="./leaves.gif" width="28" />Sub-Contextual & Cognitive Memory Architecture
 
 Grounded in Cognitive Psychology and modern agentic engineering standards, **Mana** employs a sub-contextual approach to balance AI intelligence with human cognitive ergonomics:
 
