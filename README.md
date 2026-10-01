@@ -66,22 +66,15 @@ Grounded in Cognitive Psychology and modern agentic engineering standards, **Man
 
 ## <img src="./glowing-star.gif" width="28" /> Core Features & UX Philosophy
 
-Guided Emotional Reflection
+###  System Instruction Architecture (v3)
+The prompt engineering behind **Mana** is rooted in Cognitive Ergonomics and Human-Computer Interaction (HCI) principles. It balances emotional safety with active self-reflection:
 
-Instead of a blank screen, Mana greets users with breathing exercises, such as 4-4-4 Box Breathing, to help users pause and settle before writing.
+1. **Strict Non-Clinical Guardrails:** Enforces a hard boundary against acting as a medical/clinical tool while providing compassionate distress-handling protocols.
+2. **Cognitive Load Protection:** Implements a strict *One-Question Constraint* and *Volume Mirroring* to prevent decision fatigue and tech anxiety.
+3. **ACT-Informed Defusion:** Applies Acceptance and Commitment Therapy (ACT) concepts to help users separate rigid thoughts from objective reality.
+4. **Gentle Reframing & Strengths Mirroring:** Validates emotions first, followed by subtle perspective shifts and reinforcement of user agency.
+5. **Inner Weather Synthesis:** Formats long-term journaling summaries into intuitive, low-friction "Inner Weather Reports."
 
-AI-Powered Synthesis
-
-Mana uses Gemini to transform journal entries into structured emotional insights, highlighting resilience and providing gentle prompts for further reflection.
-
-Privacy & Safety by Design
-
-Mana operates as a supportive journaling companion with clear boundaries, designed to support self-reflection and emotional wellbeing rather than serve as a medical therapist.
-
-Mindful AI Persona
-
-
-Carefully designed system instructions guide Gemini to provide warm, non-judgmental responses that are sensitive to the user's current context.
 ---
 
 ## 🛡️ Responsible AI & Ethical Guardrails
