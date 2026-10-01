@@ -47,9 +47,13 @@ Powered by Gemini, Mana acts as a supportive reflection companion rather than si
 Mana is built strictly adhering to cloud-native architectural standards, ensuring high performance, zero-hallucination guardrails, and data security:
 
 * **🧠 Gemini API (Empathetic Engine):** Powers the core conversational interface and journal synthesis. Gemini analyzes daily entries to extract key themes, emotional trends, and provides gentle, constructive feedback without clinical overstepping.
-* **🔓 Friction-Free Judge Access (Demo Architecture):** For this hackathon evaluation, Firebase Authentication was intentionally omitted to provide judges with immediate, zero-friction access to all application features without requiring account creation.
+  
+* 🔑 **Friction-Free Demo Architecture & Session Isolation:** For hackathon evaluation, zero-friction access is enabled while maintaining privacy through client-side session isolation, ensuring temporary reflection data remains strictly separated without requiring account creation.
+
 * **📊 Google Cloud Firestore (Real-Time Database):** Securely stores journal entries, structured emotional reflections, and conversation history in real time.
+  
 * **🔐 Google Cloud Secret Manager:** Safeguards critical environmental variables, including the Gemini API keys and Firebase configurations, preventing any credential exposure.
+  
 * **🚀 Google Cloud Run:** Containerized deployment for scalable, low-latency microservices.
 
 ---
