@@ -4,7 +4,7 @@
 **Developed by:** Zahra Khorram 
 
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green)
 ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-GCP-4285F4?logo=googlecloud)
 ![Gemini API](https://img.shields.io/badge/AI-Gemini%20API-8E44AD)
 
