@@ -11,7 +11,7 @@
 
 ---
 
-## 📣 Elevator Pitch
+## <img src="./leaves.gif" width="28" />Elevator Pitch
 
 Mana is a calm, AI-powered personal journal designed to make digital reflection feel more mindful and human. Instead of focusing on fast-paced productivity, Mana introduces the idea of Positive Friction in Human-Computer Interaction (HCI) by encouraging users to pause, breathe, and reflect before writing.
 
