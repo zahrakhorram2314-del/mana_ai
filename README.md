@@ -77,7 +77,7 @@ The prompt engineering behind **Mana** is rooted in Cognitive Ergonomics and Hum
 
 ---
 
-## 🛡️ Responsible AI & Ethical Guardrails
+## <img src="./file_000000000f5481f5b73422606156f62a.png" width="28" /> Responsible AI & Ethical Guardrails
 
 Mana AI is built in explicit alignment with **Google’s Responsible AI Principles**, ensuring that generative capabilities serve human well-being safely and transparently.
 
