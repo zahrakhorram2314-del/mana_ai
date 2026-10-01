@@ -75,6 +75,7 @@ The prompt engineering behind **Mana** is rooted in Cognitive Ergonomics and Hum
 3. **ACT-Informed Defusion:** Applies Acceptance and Commitment Therapy (ACT) concepts to help users separate rigid thoughts from objective reality.
 4. **Gentle Reframing & Strengths Mirroring:** Validates emotions first, followed by subtle perspective shifts and reinforcement of user agency.
 5. **Inner Weather Synthesis:** Formats long-term journaling summaries into intuitive, low-friction "Inner Weather Reports."
+6. **Guardrail & Safety Verification:** Benchmark-tested across edge cases to guarantee strict compliance with non-clinical boundaries, zero-hallucination constraints, and the single-question rule.
 
 ---
 
