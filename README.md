@@ -98,7 +98,7 @@ ___
 
 
 ___
-## 📌 Future Roadmap
+
 
 <details>
 <summary>🔍 Click to view Recent Maintenance & Bug Fixes</summary>
@@ -106,7 +106,7 @@ ___
 <br>
 
 <p align="center">
-  <img src="Screenshot_20261005_192025_Chrome.png" alt="Mana Mobile View" width="280"/>
+  <img src="Screenshot_۲۰۲۶۱۰۰۵_۱۹۲۰۲۵_Chrome.png" alt="Mana Mobile View" width="280"/>
 </p>
 
 > 🛠 **Configuration Refinement & Fix**:
