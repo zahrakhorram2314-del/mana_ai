@@ -102,8 +102,6 @@ ___
 - [ ] Voice Interactions & Emotion Detection
 - [ ] Advanced Memory Archiving
 
-<Screenshot_۲۰۲۶۱۰۰۵_۱۹۲۰۲۵_Chrome.png>
-
 <details>
 <summary>🔍 Click to view Recent Maintenance & Bug Fixes</summary>
 
@@ -113,7 +111,7 @@ ___
   <img src="Screenshot_20261005_192025_Chrome.png" alt="Mana Mobile View" width="280"/>
 </p>
 
-> 🛠️️ **Configuration Refinement & Fix**:
+> 🛠 **Configuration Refinement & Fix**:
 > Following the latest update, a temporary configuration issue occurred. It was quickly identified, resolved, and refactored for improved stability.
 
 </details>
