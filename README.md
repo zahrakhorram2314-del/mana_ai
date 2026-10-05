@@ -99,8 +99,6 @@ ___
 
 ___
 ## 📌 Future Roadmap
-- [ ] Voice Interactions & Emotion Detection
-- [ ] Advanced Memory Archiving
 
 <details>
 <summary>🔍 Click to view Recent Maintenance & Bug Fixes</summary>
