@@ -109,7 +109,7 @@ ___
   <img src="Screenshot_۲۰۲۶۱۰۰۵_۱۹۲۰۲۵_Chrome.png" alt="Mana Mobile View" width="280"/>
 </p>
 
-> 🛠 **Configuration Refinement & Fix**:
+>  **Configuration Refinement & Fix**:
 > Following the latest update, a temporary configuration issue occurred. It was quickly identified, resolved, and refactored for improved stability.
 
 </details>
