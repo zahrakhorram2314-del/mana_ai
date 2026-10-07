@@ -106,7 +106,7 @@ ___
 <br>
 
 <p align="center">
-  <img src="Screenshot_۲۰۲۶۱۰۰۵_۱۹۲۰۲۵_Chrome.png" alt="Mana Mobile View" width="280"/>
+  <img src="Screenshot_۲۰۲۶۱۰۰۷_۱۶۱۷۰۳_Chrome.png" alt="Mana Mobile View" width="280"/>
 </p>
 
 >  **Configuration Refinement & Fix**:
