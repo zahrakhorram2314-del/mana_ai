@@ -77,8 +77,21 @@ app.post('/api/chat', async (req, res) => {
   try {
     const { messages, mode = 'balanced', journalContext, useSearch = false } = req.body;
     
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
-      return res.status(400).json({ error: 'Messages array is required' });
+    if (!Array.isArray(messages) || messages.length === 0 || messages.length > 30) {
+      return res.status(400).json({ error: 'Provide between 1 and 30 messages.' });
+    }
+    const validMessages = messages.every((message: any) =>
+      message &&
+      (message.role === 'user' || message.role === 'model') &&
+      typeof message.content === 'string' &&
+      message.content.length > 0 &&
+      message.content.length <= 12000
+    );
+    if (!validMessages) {
+      return res.status(400).json({ error: 'Each message must have a valid role and contain 1–12,000 characters.' });
+    }
+    if (journalContext !== undefined && (typeof journalContext !== 'string' || journalContext.length > 20000)) {
+      return res.status(400).json({ error: 'Journal context must be text no longer than 20,000 characters.' });
     }
 
     const ai = getGeminiClient(req);
@@ -152,11 +165,11 @@ app.post('/api/chat', async (req, res) => {
       groundingMetadata,
     });
   } catch (error: any) {
-    console.error('Error in /api/chat:', error);
-    const errorMessage = error?.message || 'Failed to generate response from Mana';
+    console.error('Error in /api/chat:', error?.message || 'Unknown error');
+    const message = String(error?.message || '');
     res.status(500).json({
-      error: errorMessage,
-      hint: errorMessage.includes('API_KEY') ? 'Please provide a valid Gemini API key.' : undefined,
+      error: 'Mana could not complete that request. Please check your connection and API key, then try again.',
+      hint: /API.?KEY|api key|authentication/i.test(message) ? 'Please provide a valid Gemini API key.' : undefined,
     });
   }
 });
@@ -166,8 +179,14 @@ app.post('/api/summarize-journal', async (req, res) => {
   try {
     const { entries, date } = req.body;
     
-    if (!entries || !Array.isArray(entries) || entries.length === 0) {
-      return res.status(400).json({ error: 'At least one journal entry is required for summarization' });
+    if (!Array.isArray(entries) || entries.length === 0 || entries.length > 50) {
+      return res.status(400).json({ error: 'Provide between 1 and 50 journal entries.' });
+    }
+    const validEntries = entries.every((entry: any) =>
+      entry && typeof entry.content === 'string' && entry.content.length <= 12000
+    );
+    if (!validEntries) {
+      return res.status(400).json({ error: 'Each journal entry must contain text no longer than 12,000 characters.' });
     }
 
     const ai = getGeminiClient(req);
@@ -252,8 +271,8 @@ Produce compassionate, clear bullet points, accurate mood detection, emotional t
 app.post('/api/analyze-entry', async (req, res) => {
   try {
     const { title, content } = req.body;
-    if (!content || typeof content !== 'string') {
-      return res.status(400).json({ error: 'Content is required' });
+    if (typeof content !== 'string' || content.trim().length === 0 || content.length > 12000) {
+      return res.status(400).json({ error: 'Content must contain 1–12,000 characters.' });
     }
 
     const ai = getGeminiClient(req);
@@ -296,6 +315,11 @@ Extract the primary mood, mood score (1-10), 3 emotional tags, and a 1-2 sentenc
 app.post('/api/generate-prompts', async (req, res) => {
   try {
     const { category = 'reflection', recentMoods = [] } = req.body;
+    if (typeof category !== 'string' || category.length > 100 ||
+        !Array.isArray(recentMoods) || recentMoods.length > 20 ||
+        !recentMoods.every((mood: unknown) => typeof mood === 'string' && mood.length <= 80)) {
+      return res.status(400).json({ error: 'Invalid prompt category or mood context.' });
+    }
     const ai = getGeminiClient(req);
 
     const prompt = `Generate 4 thoughtful, empathetic, non-intrusive journaling prompts for the category: "${category}".
