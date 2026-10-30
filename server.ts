@@ -7,9 +7,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = Number.parseInt(process.env.PORT || '8080', 10);
 
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '1mb' }));
 
 const MANA_SYSTEM_INSTRUCTION = `You are 'Mana', an empathetic, intelligent, and easy-to-understand AI journaling companion—communicating with the exact natural tone of Google Gemini.
 
@@ -68,7 +68,7 @@ function getGeminiClient(req: express.Request): GoogleGenAI {
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    hasServerKey: Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'MY_GEMINI_API_KEY'),
+    hasServerKey: Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim().length > 0 && process.env.GEMINI_API_KEY !== 'MY_GEMINI_API_KEY'),
   });
 });
 
