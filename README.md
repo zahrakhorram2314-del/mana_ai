@@ -1,8 +1,24 @@
 
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,24,15&height=200&section=header&text=Mana&fontSize=80&animation=twinkle&fontColor=ffffff" />
+<<div align="center">
+
+  <!-- بنر یا عنوان متحرک -->
+  <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=800&size=40&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=🌱+Mana;Empathetic+AI+Journal;Self-Reflection+Companion" alt="Mana Title" />
+
+  <p><b>Empathetic AI Journal & Self-Reflection Companion</b></p>
+
+  <!-- نشان‌ها (Badges) -->
+  <p>
+    <a href="#"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Node.js-v18+-blue.svg" alt="Node"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Google_Cloud-GCP-orange.svg" alt="GCP"></a>
+    <a href="#"><img src="https://img.shields.io/badge/AI-Gemini_API-purple.svg" alt="Gemini"></a>
+  </p>
+
 </div>
+
+---
+
 
 
 
