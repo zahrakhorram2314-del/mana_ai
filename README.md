@@ -2,12 +2,12 @@
 
 <<div align="center">
 
-  <!-- بنر یا عنوان متحرک -->
+  <!-
   <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=800&size=40&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=🌱+Mana;Empathetic+AI+Journal;Self-Reflection+Companion" alt="Mana Title" />
 
   <p><b>Empathetic AI Journal & Self-Reflection Companion</b></p>
 
-  <!-- نشان‌ها (Badges) -->
+  <!-
   <p>
     <a href="#"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
     <a href="#"><img src="https://img.shields.io/badge/Node.js-v18+-blue.svg" alt="Node"></a>
