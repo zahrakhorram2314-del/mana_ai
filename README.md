@@ -1,3 +1,13 @@
+
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,24,15&height=200&section=header&text=Mana&fontSize=80&animation=twinkle&fontColor=ffffff" />
+</div>
+
+
+
+
+
 ## <img src="./leaves.gif" width="28" /> Mana: Empathetic AI Journal & Self-Reflection Companion  
 
 **Google Cloud Run AI Hackathon Submission**  
