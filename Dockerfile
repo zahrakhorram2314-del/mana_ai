@@ -19,6 +19,7 @@ COPY package*.json ./
 RUN npm install --omit=dev && npm cache clean --force
 
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/server.cjs ./server.cjs
 
 EXPOSE 8080
-CMD ["node", "dist/server.cjs"]
+CMD ["node", "server.cjs"]
