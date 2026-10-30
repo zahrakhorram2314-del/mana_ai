@@ -1,138 +1,103 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,24,15&height=200&section=header&text=Mana&fontSize=80&animation=twinkle&fontColor=ffffff" />
-</div>
+# Mana — AI Journaling & Self-Reflection Companion
 
+Mana is an experimental AI-assisted journaling project exploring how conversational AI can support personal reflection through a calm, user-directed experience.
 
+It is a software prototype, not a clinical or mental-health service. It does not provide diagnosis, treatment, or professional advice.
 
+## Project links
 
+- **Live prototype:** [Open Mana in Google AI Studio](https://mana-journal-app-2026.ai.studio/)
+- **Source code:** [GitHub repository](https://github.com/zahrakhorram2314-del/mana_ai)
+- **Project walkthrough:** [Video on LinkedIn](https://lnkd.in/p/eZENQcwu)
+- **Case study:** [Mana — Where Psychology Meets AI](https://zahrakhorram2314.medium.com/mana-where-psychology-meets-ai-for-better-self-reflection-51b767ed5996)
 
+## What the prototype includes
 
+- Journal entry creation and organization.
+- AI-assisted reflection and single-entry summaries.
+- Daily summaries with mood labels, themes, and reflection prompts.
+- A conversational interface that can optionally use recent journal context.
+- Optional Gemini web search for requests that need external information.
+- Email/password, Google, and anonymous Firebase sign-in flows.
+- Firestore-backed user profiles, journal entries, chat messages, and daily summaries.
+- A non-clinical disclaimer and supportive crisis-response instructions in the model's system instruction.
 
+The AI-generated mood labels and scores are interpretive outputs, not validated psychological measurements.
 
-## <img src="./leaves.gif" width="28" /> Mana: Empathetic AI Journal & Self-Reflection Companion  
+## Technology
 
-**Google Cloud Run AI Hackathon Submission**  
-**Developed by:** Zahra Khorram 
+- **Frontend:** React, TypeScript, Vite
+- **AI:** Google Gemini API via `@google/genai`
+- **Backend:** Express
+- **Authentication:** Firebase Authentication
+- **Database:** Cloud Firestore
+- **Deployment target:** Docker / Google Cloud Run
 
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green)
-![Google Cloud](https://img.shields.io/badge/Google%20Cloud-GCP-4285F4?logo=googlecloud)
-![Gemini API](https://img.shields.io/badge/AI-Gemini%20API-8E44AD)
+## Architecture overview
 
+1. The React client sends chat and journal-analysis requests to the Express API.
+2. The server calls the Gemini API and returns generated text or structured JSON.
+3. Firebase Authentication provides user identities.
+4. The client-side Firestore service stores user-scoped data under `users/{uid}`.
+5. Firestore Security Rules restrict access to the authenticated owner of each user document.
 
----
+The Gemini API key can be supplied by the server environment or by a user-provided key. A user-provided key is sent to the application's API endpoint for the request; users should only use a deployment they trust.
 
-## <img src="./leaves.gif" width="28" />Elevator Pitch
+## Run locally
 
-Mana is a calm, AI-powered personal journal designed to make digital reflection feel more mindful and human. Instead of focusing on fast-paced productivity, Mana introduces the idea of Positive Friction in Human-Computer Interaction (HCI) by encouraging users to pause, breathe, and reflect before writing.
-
-
-Powered by Gemini, Mana acts as a supportive reflection companion rather than simply generating text, helping users explore their thoughts and emotions through a more thoughtful interaction.
----
-
-## <img src="./leaves.gif" width="28" />Live Demo & Links
-
-*  **Interactive Prototype:** [Try Mana Live](https://mana-journal-app-2026.ai.studio/)
-* **GitHub Repository:** [Mana Repository](https://github.com/zahrakhorram2314-del/mana_ai)
-*  **Video Demo:** [Watch Demo on LinkedIn](https://lnkd.in/p/eZENQcwu)
-*  **Medium Article:** [Read the Case Study](https://zahrakhorram2314.medium.com/mana-where-psychology-meets-ai-for-better-self-reflection-51b767ed5996)
-
----
-
-## <img src="./camera-flash.gif" width="28" /> Application Preview & Core Features
-
-| 📝 New Journal Entry | 📊 Emotional Summary Dashboard |
-| :---: | :---: |
-| ![Journal Entry](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۲۶_Chrome.jpg) | ![Summary Dashboard](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۳۶_Chrome.jpg) |
-
-| 🧘 Peace & Wellness Sanctuary | 💬 Mana Reflection Space |
-| :---: | :---: |
-| ![Wellness Sanctuary](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۴۴_Chrome.jpg) | ![Mana Reflection](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۲۱۲_Chrome.jpg) |
-
----
-
-## 🛠️ Technical Architecture & Google Cloud Integration
-
-Mana is built strictly adhering to cloud-native architectural standards, ensuring high performance, zero-hallucination guardrails, and data security:
-
-* **🧠 Gemini API (Empathetic Engine):** Powers the core conversational interface and journal synthesis. Gemini analyzes daily entries to extract key themes, emotional trends, and provides gentle, constructive feedback without clinical overstepping.
-  
-* 🔑 **Friction-Free Demo Architecture & Session Isolation:** For hackathon evaluation, zero-friction access is enabled while maintaining privacy through client-side session isolation, ensuring temporary reflection data remains strictly separated without requiring account creation.
-
-* **📊 Google Cloud Firestore (Real-Time Database):** Securely stores journal entries, structured emotional reflections, and conversation history in real time.
-  
-* **🔐 Google Cloud Secret Manager:** Safeguards critical environmental variables, including the Gemini API keys and Firebase configurations, preventing any credential exposure.
-  
-* **🚀 Google Cloud Run:** Containerized deployment for scalable, low-latency microservices.
-
----
-
-## <img src="./leaves.gif" width="28" />Sub-Contextual & Cognitive Memory Architecture
-
-Grounded in Cognitive Psychology and modern agentic engineering standards, **Mana** employs a sub-contextual approach to balance AI intelligence with human cognitive ergonomics:
-
-* **Bounded Context Window (Short-Term Working Memory):** Instead of dumping massive raw chat history into the prompt window, Mana models context using a dynamic working memory buffer. Text streams are strictly bounded and structured to eliminate attention degradation, lower response latency, and maintain deterministic empathetic depth.
-
-* **Positive Friction & Cognitive Ergonomics:** Rather than encouraging passive content consumption, Mana introduces intentional HCI friction (such as guided box-breathing prompts) to reduce mental friction and encourage deliberate self-reflection.
-* **Deterministic Guardrail Harness:** Non-deterministic LLM generation is strictly bounded by deterministic validation layers, ensuring zero-hallucination boundaries and preventing the system from crossing non-clinical limits.
-
----
-
-## <img src="./glowing-star.gif" width="28" /> Core Features & UX Philosophy
-
-###  System Instruction Architecture (v3)
-The prompt engineering behind **Mana** is rooted in Cognitive Ergonomics and Human-Computer Interaction (HCI) principles. It balances emotional safety with active self-reflection:
-
-1. **Strict Non-Clinical Guardrails:** Enforces a hard boundary against acting as a medical/clinical tool while providing compassionate distress-handling protocols.
-2. **Cognitive Load Protection:** Implements a strict *One-Question Constraint* and *Volume Mirroring* to prevent decision fatigue and tech anxiety.
-3. **ACT-Informed Defusion:** Applies Acceptance and Commitment Therapy (ACT) concepts to help users separate rigid thoughts from objective reality.
-4. **Gentle Reframing & Strengths Mirroring:** Validates emotions first, followed by subtle perspective shifts and reinforcement of user agency.
-5. **Inner Weather Synthesis:** Formats long-term journaling summaries into intuitive, low-friction "Inner Weather Reports."
-6. **Guardrail & Safety Verification:** Benchmark-tested across edge cases to guarantee strict compliance with non-clinical boundaries, zero-hallucination constraints, and the single-question rule.
-
----
-
-## <img src="./file_000000000f5481f5b73422606156f62a.png" width="28" /> Responsible AI & Ethical Guardrails
-
-Mana AI is built in explicit alignment with **Google’s Responsible AI Principles**, ensuring that generative capabilities serve human well-being safely and transparently.
-
-* **Non-Clinical Boundary (Safety & Social Benefit):** Designed strictly for supportive self-reflection and daily journaling. Systematic system instructions explicitly prevent the model from providing psychiatric diagnoses, clinical advice, or acting as a licensed therapist.
-* **Privacy by Design:** User interaction data and reflection logs are isolated and secured using **Google Cloud Firestore Security Rules** and **GCP Secret Manager**, ensuring sensitive personal notes are never exposed or misused.
-* **Cognitive Load & Ergonomics:** Grounded in cognitive psychology, the prompt architecture avoids overwhelming text generation, using structured, calm, and empathetic framing to minimize user mental friction.
-* **Human-in-the-Loop & Agency:** The AI acts strictly as a reflective co-pilot, leaving all emotional evaluation and decision-making fully in the hands of the user.
-___
-
-## 🗺️ Future Roadmap
-* 🎨 **Figma Interactive Prototypes:** Complete high-fidelity UI design flows and micro-interactions.
-* 📊 **Mood Trend Insights:** Introduce non-intrusive, privacy-first emotional reflection patterns over time.
-* 🌐 **Cross-Lingual Benchmarking:** Expanding standardized evaluation datasets for non-English cognitive UX and localized emotional reflection validation.
-
-
-___
-
-
-<details>
-<summary>🔍 Click to view Recent Maintenance & Bug Fixes</summary>
-
-<br>
-
-<p align="center">
-  <img src="Screenshot_۲۰۲۶۱۰۰۷_۱۶۱۷۰۳_Chrome.png" alt="Mana Mobile View" width="280"/>
-</p>
-
->  **Configuration Refinement & Fix**:
-> Following the latest update, a temporary configuration issue occurred. It was quickly identified, resolved, and refactored for improved stability.
-
-</details>
-
----
-
-## 💻 How to Run Locally
-
-1. Clone the repository:
+Requirements: Node.js 20 or later and a Firebase project configured for the application.
 
 ```bash
 git clone https://github.com/zahrakhorram2314-del/mana_ai.git
 cd mana_ai
 npm install
 npm run dev
+```
+
+Create a `.env` file if you want to provide a server-side Gemini key:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+PORT=8080
+```
+
+Configure the Firebase web app using the project's Firebase configuration file. Do not commit private service-account credentials or secret keys.
+
+For a production build:
+
+```bash
+npm run build
+npm start
+```
+
+For a Docker build:
+
+```bash
+docker build -t mana .
+docker run --rm -p 8080:8080 -e GEMINI_API_KEY=your_gemini_api_key mana
+```
+
+## Privacy and safety notes
+
+- Firestore rules are designed to restrict each signed-in user to their own user-scoped documents.
+- The app's Firestore rules do not, by themselves, establish end-to-end encryption or guarantee that data is never exposed.
+- Journal text may be sent to Gemini when a user requests AI features. Review the applicable Google AI and Firebase data-handling terms before using real or sensitive personal information.
+- The application is not a substitute for mental-health care, diagnosis, or emergency support.
+- AI-generated summaries, mood labels, and reflections can be inaccurate. Users should review them critically and remain in control of their own interpretation.
+
+## Known limitations
+
+- The repository does not currently include an automated test suite for the AI safety boundaries or Firestore rules.
+- AI output is probabilistic; the project does not claim zero hallucinations or guaranteed clinical safety.
+- Deployment configuration and live-demo availability may differ by environment and should be verified before relying on the hosted prototype.
+
+## Roadmap
+
+- Add automated tests for API validation and Firestore access rules.
+- Add documented evaluation cases for prompt injection, crisis language, and non-clinical boundaries.
+- Document data retention, deletion, and user consent flows.
+- Add reproducible deployment instructions and a verified demo walkthrough.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE).
