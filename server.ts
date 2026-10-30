@@ -262,8 +262,8 @@ Produce compassionate, clear bullet points, accurate mood detection, emotional t
       date: date || new Date().toISOString().split('T')[0],
     });
   } catch (error: any) {
-    console.error('Error in /api/summarize-journal:', error);
-    res.status(500).json({ error: error?.message || 'Failed to generate summary' });
+    console.error('Error in /api/summarize-journal:', error?.message || 'Unknown error');
+    res.status(500).json({ error: 'Mana could not generate the summary. Please check your connection and API key, then try again.' });
   }
 });
 
@@ -306,8 +306,8 @@ Extract the primary mood, mood score (1-10), 3 emotional tags, and a 1-2 sentenc
     const result = parseGeminiJson(response.text, {});
     res.json(result);
   } catch (error: any) {
-    console.error('Error in /api/analyze-entry:', error);
-    res.status(500).json({ error: error?.message || 'Failed to analyze entry' });
+    console.error('Error in /api/analyze-entry:', error?.message || 'Unknown error');
+    res.status(500).json({ error: 'Mana could not analyze this entry. Please check your connection and API key, then try again.' });
   }
 });
 
@@ -351,8 +351,8 @@ Return a JSON array of prompt objects with title and prompt text.`;
     const result = parseGeminiJson(response.text, []);
     res.json({ prompts: result });
   } catch (error: any) {
-    console.error('Error in /api/generate-prompts:', error);
-    res.status(500).json({ error: error?.message || 'Failed to generate prompts' });
+    console.error('Error in /api/generate-prompts:', error?.message || 'Unknown error');
+    res.status(500).json({ error: 'Mana could not generate prompts. Please check your connection and API key, then try again.' });
   }
 });
 
