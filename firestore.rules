@@ -20,7 +20,13 @@ service cloud.firestore {
 
     // User profiles
     match /users/{userId} {
-      allow get, update: if isOwner(userId) && isValidId(userId);
+      allow get: if isOwner(userId) && isValidId(userId);
+      // A user may update profile display fields, but cannot rewrite the UID or creation timestamp.
+      allow update: if isOwner(userId) &&
+        isValidId(userId) &&
+        request.resource.data.userId == resource.data.userId &&
+        request.resource.data.userId == userId &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['email', 'displayName']);
       allow create: if isOwner(userId) && isValidId(userId) && request.resource.data.userId == userId;
       allow delete: if false;
 
