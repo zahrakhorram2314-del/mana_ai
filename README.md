@@ -1,6 +1,7 @@
-<h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=35&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=🌱+Mana;Empathetic+AI+Journal;Self-Reflection+Companion" alt="Mana Header" />
-</h1>
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,24,15&height=200&section=header&text=Mana&fontSize=80&animation=twinkle&fontColor=ffffff" />
+</div>
+
 
 
 
