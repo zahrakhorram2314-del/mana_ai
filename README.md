@@ -1,8 +1,8 @@
 
 
-<<div align="center">
-
-  <!-
+<<div align="center"><h1 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=35&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=🌱+Mana;Empathetic+AI+Journal;Self-Reflection+Companion" alt="Mana Header" />
+</h1>
   <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=800&size=40&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=🌱+Mana;Empathetic+AI+Journal;Self-Reflection+Companion" alt="Mana Title" />
 
   <p><b>Empathetic AI Journal & Self-Reflection Companion</b></p>
