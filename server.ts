@@ -11,6 +11,16 @@ const PORT = Number.parseInt(process.env.PORT || '8080', 10);
 
 app.use(express.json({ limit: '1mb' }));
 
+// Timing helper: logs how long an async call takes
+async function timed<T>(label: string, fn: () => Promise<T>): Promise<T> {
+  const t0 = Date.now();
+  try {
+    return await fn();
+  } finally {
+    console.log(`[timing] ${label}: ${Date.now() - t0} ms`);
+  }
+}
+
 const MANA_SYSTEM_INSTRUCTION = `You are 'Mana', an empathetic, intelligent, and easy-to-understand AI journaling companion—communicating with the exact natural tone of Google Gemini.
 
 # TONE & COMMUNICATION STYLE
@@ -133,11 +143,9 @@ app.post('/api/chat', async (req, res) => {
 
     let response: any;
     try {
-      response = await ai.models.generateContent({
-        model,
-        contents,
-        config,
-      });
+      response = await timed(`chat (${model}, mode: ${mode})`, () =>
+        ai.models.generateContent({ model, contents, config })
+      );
     } catch (primaryErr: any) {
       console.warn(`Primary model/config (${model}, mode: ${mode}) error:`, primaryErr?.message);
       console.warn('Attempting robust fallback to gemini-3.6-flash...');
