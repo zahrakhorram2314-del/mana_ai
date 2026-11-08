@@ -62,7 +62,7 @@ responseText.textContent =
 data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
 }
 } catch (e) {
-responseText.textContent = "Error: " + e.message;
+responseText.textContent = "Error: " + e.name + " | " + e.message;
 }
 
 reflectBtn.disabled = false;
