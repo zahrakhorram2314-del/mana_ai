@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mana AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div class="logo">✦</div>
+      <div>
+        <h1>Mana</h1>
+        <p>Your space for reflection</p>
+      </div>
+    </header>
+
+    <label for="note">What's on your mind?</label>
+    <textarea id="note" placeholder="Write a thought, a moment, or something you'd like to reflect on..."></textarea>
+
+    <button id="reflectBtn">Ask Mana</button>
+
+    <section id="result" aria-live="polite" hidden>
+      <h2>Mana's reflection</h2>
+      <p id="response"></p>
+    </section>
+
+    <footer>Your thoughts. Your pace. Your choice.</footer>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
