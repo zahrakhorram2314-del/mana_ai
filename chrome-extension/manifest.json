@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Mana AI Companion",
+  "version": "0.1.0",
+  "description": "A thoughtful AI journaling and self-reflection companion.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open Mana"
+  }
+}
