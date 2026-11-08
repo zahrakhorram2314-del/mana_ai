@@ -70,6 +70,32 @@ The actual behavior of the live prototype depends on its deployment configuratio
 
 ---
 
+## 🧠 Cognitive Design Decisions
+
+Mana translates selected concepts from cognitive psychology and Human–Computer Interaction into practical interface decisions. These are design rationales and testable hypotheses—not claims of proven clinical or cognitive outcomes.
+
+| Cognitive principle | Design decision in Mana | Intended UX contribution | How it can be evaluated |
+| :--- | :--- | :--- | :--- |
+| **Working memory & cognitive load** | Keep reflections concise, structured, and focused on a small number of relevant points. | Make AI output easier to scan and understand. | Compare comprehension, task completion, and perceived workload across response formats. |
+| **Selective attention** | Keep journaling as the primary activity and make AI assistance secondary and optional. | Reduce competing demands during writing. | Observe writing tasks, interruptions, and navigation behavior. |
+| **Metacognition** | Separate user-provided observations from tentative AI interpretations; invite users to agree, edit, or disagree. | Support independent reflection rather than presenting AI interpretations as facts. | Test whether users can identify uncertainty and distinguish evidence from interpretation. |
+| **Cognitive offloading** | Support saving, searching, tagging, and revisiting journal entries. | Help users use the journal as an external record. | Run information-retrieval tasks and measure accuracy and time-on-task. |
+| **Goal setting & action planning** | Offer a small next step only when relevant, and allow users to decline it. | Keep suggestions manageable while preserving user agency. | Collect relevance, usefulness, and perceived-control feedback. |
+| **Reflective emotion labeling** | Treat AI-generated mood labels as tentative and non-clinical; allow users to correct or ignore them. | Make summaries easier to question and personalize. | Review label accuracy against user feedback and monitor misinterpretation. |
+| **Interaction pacing** | Offer short, optional breathing cues that users can stop or skip. | Provide a structured pause without making therapeutic claims. | Evaluate clarity, accessibility, comfort, and user preference. |
+
+### Design principles in practice
+
+- **Ground interpretations in user input:** Do not invent memories, motives, emotions, or events.
+- **Make uncertainty visible:** Distinguish what the user wrote from what the AI inferred.
+- **Preserve user agency:** Suggestions are invitations, not instructions.
+- **Avoid unnecessary cognitive demand:** Prefer one relevant prompt or action over an overwhelming list.
+- **Treat evaluation as part of design:** Validate usability and comprehension with users before making effectiveness claims.
+
+The detailed rationale, conceptual diagrams, limitations, references, and proposed evaluation plan are documented in [CASE_STUDY.md](./CASE_STUDY.md).
+
+---
+
 ## <img src="./leaves.gif" width="28" /> Context & Cognitive UX Approach
 
 Mana explores how cognitive psychology and human–computer interaction can shape a more deliberate journaling experience.
