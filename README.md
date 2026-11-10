@@ -43,7 +43,7 @@ Mana is a software prototype—not a therapy, diagnosis, or clinical service.
 | :---: | :---: |
 | ![Wellness Sanctuary](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۱۴۴_Chrome.jpg) | ![Mana Reflection](Screenshot_۲۰۲۶۰۹۰۸_۲۱۳۲۱۲_Chrome.jpg) |
 
-### Main experience
+### <img src="./leaves.gif" width="28" /> Main experience
 
 - **AI Journaling:** Create, edit, search, filter, tag, and revisit personal journal entries.
 - **Personalized Life Insights:** Optional reflections grounded in the journal text the user chooses to share, with observations distinguished from tentative interpretations.
@@ -84,7 +84,7 @@ Mana translates selected concepts from cognitive psychology and Human–Computer
 | **Reflective emotion labeling** | Treat AI-generated mood labels as tentative and non-clinical; allow users to correct or ignore them. | Make summaries easier to question and personalize. | Review label accuracy against user feedback and monitor misinterpretation. |
 | **Interaction pacing** | Offer short, optional breathing cues that users can stop or skip. | Provide a structured pause without making therapeutic claims. | Evaluate clarity, accessibility, comfort, and user preference. |
 
-### Design principles in practice
+### <img src="./leaves.gif" width="28" /> Design principles in practice
 
 - **Ground interpretations in user input:** Do not invent memories, motives, emotions, or events.
 - **Make uncertainty visible:** Distinguish what the user wrote from what the AI inferred.
